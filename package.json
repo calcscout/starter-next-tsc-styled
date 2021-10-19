@@ -5,6 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
+    "postinstall": "husky install",
     "prepare": "husky install",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
@@ -36,7 +37,7 @@
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
     "globby": "latest",
-    "husky": "^7.0.2",
+    "husky": "^7.0.0",
     "lint-staged": "^11.2.3",
     "next-seo": "latest",
     "prettier": "latest",
