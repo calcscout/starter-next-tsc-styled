@@ -66,20 +66,128 @@ table {
   isolation: isolate;
   --color-white: hsl(0 0% 100%);
   --color-black: hsl(0 0% 0%);
-  --color-bg: #2e3039;
-  --color-gray-100: hsl(185 5% 95%);
-  --color-gray-300: hsl(190 5% 80%);
-  --color-gray-500: hsl(196 4% 60%);
-  --color-gray-700: hsl(220 5% 40%);
-  --color-gray-900: hsl(220 3% 20%);
-  --color-primary: hsl(340 65% 47%);
-  --color-secondary: hsl(240 60% 63%);
-  background-color: var(--color-bg);
+  --color-bg-dark: hsl(233 13% 13%);
+  --color-bg-light: hsl(0 0% 100%);
+  --color-blue-100: #e8f2ff;
+  --color-blue-500: #4b96ff;
+  --color-blueGray-500: #a9adc1;
+  --color-gray-100: #f7f7f7;
+  --color-gray-200: #e6e9ee;
+  --color-gray-300: #dde0e4;
+  --color-gray-400: #818890;
+  --color-gray-500: #535661;
+  --color-gray-600: #4b4c53;
+  --color-gray-700: #3a3d4a;
+  --color-gray-800: #2e3039;
+  --color-gray-900: #1f2028;
+  --color-green-100: #e7f9ed;
+  --color-green-500: #30c85e;
+  --color-green-600: #68d94a;
+  --color-red-500: #ff4545;
+  --color-yellow-500: #ffd644;  
+}
+
+.light {
+  --bg-primary: var(--color-white);
+  --bg-secondary: var(--color-gray-100);
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-gray-500);
+}
+
+.dark {
+  --bg-primary: var(--color-bg-dark);
+  --bg-secondary: var(--color-gray-800);
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-blueGray-500);
 }
 
 html, body, #root, #__next {
   height: 100%;
+  background-color: var(---bg-primary);
+  color: var(---text-primary);
 }
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: black !important;
+  box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
+  background-clip: content-box !important;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-text-fill-color: white !important;
+  box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
+  background-clip: content-box !important;
+}
+
+input:-webkit-autofill::first-line {
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-family: Matter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+
+[hidden] {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :focus {
+    transition: outline-offset 0.1s ease;
+    outline-offset: 4px;
+  }
+}
+
+.underlined {
+  position: relative;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.underlined:focus {
+  outline: none;
+  text-decoration: none !important;
+}
+
+.underlined:after {
+  content: '';
+  height: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  transform-origin: left;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  display: block;
+  position: absolute;
+}
+
+.underlined:hover:after,
+.underlined:focus:after,
+.active.underlined:after {
+  background-color: currentColor;
+  transform: scaleX(1);
+}
+
 `;
 
 export default GlobalStyles;
