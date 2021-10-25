@@ -84,7 +84,8 @@ table {
   --color-green-500: #30c85e;
   --color-green-600: #68d94a;
   --color-red-500: #ff4545;
-  --color-yellow-500: #ffd644;  
+  --color-yellow-500: #ffd644;
+  --main-container-padding: 16px;
 }
 
 .dark-mode {
@@ -114,6 +115,13 @@ html, body, #root, #__next {
 
 body {
   overflow-x: hidden;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: '100%';
+  align-items: center;
 }
 
 * {

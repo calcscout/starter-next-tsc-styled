@@ -27,7 +27,7 @@ export default function Home(): JSX.Element {
       />
 
       <MainLayout>
-        <Title>Calcscout Starter Kit</Title>
+        <Title>Apecessories</Title>
       </MainLayout>
     </>
   );
@@ -35,5 +35,6 @@ export default function Home(): JSX.Element {
 
 const Title = styled.h1`
   color: var(--color-white);
-  font-size: 50px;
+  font-size: 2rem;
+  text-align: center;
 `;

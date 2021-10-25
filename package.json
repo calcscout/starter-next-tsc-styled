@@ -17,6 +17,7 @@
     "next-translate": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-icons": "^4.3.1",
     "react-is": "latest",
     "styled-components": "latest"
   },
