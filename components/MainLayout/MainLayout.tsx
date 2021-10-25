@@ -13,7 +13,6 @@ export default function MainLayout(props: MainLayoutProps): JSX.Element {
   return (
     <Container>
       <Header />
-      <Header />
       <Main>{children}</Main>
       <Footer />
     </Container>
@@ -23,7 +22,7 @@ export default function MainLayout(props: MainLayoutProps): JSX.Element {
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  /* display: flex; */
+  display: flex;
   align-items: center;
   justify-content: center;
 `;

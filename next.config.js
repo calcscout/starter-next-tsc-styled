@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import generateSitemap from './scripts/generate-sitemap.mjs';
-const withPlugins = require('next-compose-plugins');
+// import generateSitemap from './scripts/generate-sitemap.mjs';
+// const withPlugins = require('next-compose-plugins');
 const nextTranslate = require('next-translate');
-const nextConfig = {
+
+const withConfig = nextTranslate({
   webpack(config, { isServer }) {
     if (isServer) {
-      generateSitemap();
+      // generateSitemap();
     }
     config.module.rules.push({
       test: /\.svg$/,
@@ -27,6 +28,6 @@ const nextConfig = {
 
     return config;
   }
-};
+});
 
-module.exports = withPlugins([nextTranslate, {}], nextConfig);
+module.exports = withConfig;

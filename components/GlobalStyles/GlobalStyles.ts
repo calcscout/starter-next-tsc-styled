@@ -87,24 +87,25 @@ table {
   --color-yellow-500: #ffd644;  
 }
 
-.light {
-  --bg-primary: var(--color-white);
-  --bg-secondary: var(--color-gray-100);
-  --text-primary: var(--color-black);
-  --text-secondary: var(--color-gray-500);
-}
-
-.dark {
+.dark-mode {
   --bg-primary: var(--color-bg-dark);
   --bg-secondary: var(--color-gray-800);
   --text-primary: var(--color-white);
   --text-secondary: var(--color-blueGray-500);
 }
 
+
+.light-mode {
+  --bg-primary: var(--color-white);
+  --bg-secondary: var(--color-gray-100);
+  --text-primary: var(--color-black);
+  --text-secondary: var(--color-gray-500);
+}
+
 html, body, #root, #__next {
   height: 100%;
-  background-color: var(---bg-primary);
-  color: var(---text-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 :focus:not(:focus-visible) {
@@ -128,10 +129,10 @@ input:-webkit-autofill:active {
   background-clip: content-box !important;
 }
 
-.dark input:-webkit-autofill,
-.dark input:-webkit-autofill:hover,
-.dark input:-webkit-autofill:focus,
-.dark input:-webkit-autofill:active {
+.dark-mode input:-webkit-autofill,
+.dark-mode input:-webkit-autofill:hover,
+.dark-mode input:-webkit-autofill:focus,
+.dark-mode input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   box-shadow: 0 0 0 999px var(--color-gray-800) inset !important;
   background-clip: content-box !important;
@@ -140,7 +141,7 @@ input:-webkit-autofill:active {
 input:-webkit-autofill::first-line {
   font-size: 1.125rem;
   font-weight: 500;
-  font-family: Matter, ui-sans-serif, system-ui, -apple-system,
+  font-family: ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji';

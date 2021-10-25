@@ -50,8 +50,7 @@
     }
   },
   "lint-staged": {
-    "*.@(ts|tsx|js)": [
-      "npm run type-check",
+    "*.@(ts|tsx)": [
       "eslint . --ext ts --ext tsx --ext js",
       "prettier --write ."
     ]
