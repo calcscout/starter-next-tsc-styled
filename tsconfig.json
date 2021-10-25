@@ -19,7 +19,7 @@
     "preserveConstEnums": true,
     "removeComments": false,
     "baseUrl": ".",
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   },
   "exclude": ["node_modules", "scripts/generate-sitemap.js", ".next", "out"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"]
