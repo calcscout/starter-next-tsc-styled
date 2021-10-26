@@ -14,13 +14,6 @@ export default class MyDocument extends Document {
 
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-          <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="anonymous" />
-
-          <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            rel="stylesheet"
-          />
-
           {/* From realfavicongenerator.net */}
 
           <link rel="shortcut icon" href="/img/manifest/favicon.ico" />
