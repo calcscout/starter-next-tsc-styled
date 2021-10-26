@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IconButton = styled.button`
+const IconButton = styled.button`
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -59,3 +59,5 @@ export const IconButton = styled.button`
     fill: var(--text-secondary);
   }
 `;
+
+export default IconButton;

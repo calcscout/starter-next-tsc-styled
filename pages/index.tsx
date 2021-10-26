@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
 
 import styled from 'styled-components';
+import Typography from 'components/Typography';
 
 export default function Home(): JSX.Element {
   const { t, lang } = useTranslation('home'),
@@ -28,6 +29,7 @@ export default function Home(): JSX.Element {
 
       <MainLayout>
         <Title>Apecessories</Title>
+        <Typography variant="button">Test Component</Typography>
       </MainLayout>
     </>
   );

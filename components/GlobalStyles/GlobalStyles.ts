@@ -128,10 +128,10 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+.light-mode input:-webkit-autofill,
+.light-mode input:-webkit-autofill:hover,
+.light-mode input:-webkit-autofill:focus,
+.light-mode input:-webkit-autofill:active {
   -webkit-text-fill-color: black !important;
   box-shadow: 0 0 0 999px var(--color-gray-100) inset !important;
   background-clip: content-box !important;
