@@ -29,7 +29,30 @@ export default function Home(): JSX.Element {
 
       <MainLayout>
         <Title>Apecessories</Title>
-        <Typography variant="button">Test Component</Typography>
+        <Typography variant="h1" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="h2" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="h3" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="h4" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="h5" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="h6" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="body1" align="right">
+          Test Component
+        </Typography>
+        <Typography variant="body2" align="right">
+          Test Component
+        </Typography>
       </MainLayout>
     </>
   );
