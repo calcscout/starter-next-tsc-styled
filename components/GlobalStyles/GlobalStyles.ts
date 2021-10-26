@@ -45,6 +45,21 @@ table {
 	border-spacing: 0;
 }
 
+/* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
+*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+    all: unset;
+    display: revert;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-width: 100%;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
 
 /* GLOBAL STYLES */
 /* montserrat-300 - latin */
@@ -97,8 +112,6 @@ table {
        url('/fonts/montserrat-v18-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-
-
 *,
 *:before,
 *:after {
@@ -122,6 +135,8 @@ table {
   --color-bg-light: hsl(0 0% 100%);
   --color-blue-100: #e8f2ff;
   --color-blue-500: #4b96ff;
+  --color-blue-main: #0069ed;
+  --color-blue-main-hover: #0053ba;
   --color-blueGray-500: #a9adc1;
   --color-gray-100: #f7f7f7;
   --color-gray-200: #e6e9ee;

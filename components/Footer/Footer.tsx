@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 //components
-import IconButton from 'components/IconButton';
+// import IconButton from 'components/IconButton';
 
 //icons
-import { SiSurveymonkey } from 'react-icons/si';
+// import { SiSurveymonkey } from 'react-icons/si';
 
 //components
 
@@ -15,10 +15,15 @@ type ComponentProps = {
 export default function Footer(_props: ComponentProps): JSX.Element {
   return (
     <Wrapper>
-      © 2021 &nbsp;<span className="underlined"> Apecessories </span>&nbsp;
-      <IconButton style={{ fontSize: '20px' }}>
+      {`© ${new Date().getFullYear()}`} &nbsp;
+      <span className="underlined" style={{ cursor: 'pointer' }}>
+        {' '}
+        Apecessories{' '}
+      </span>
+      &nbsp;
+      {/* <IconButton style={{ fontSize: '20px' }}>
         <SiSurveymonkey />
-      </IconButton>
+      </IconButton> */}
     </Wrapper>
   );
 }

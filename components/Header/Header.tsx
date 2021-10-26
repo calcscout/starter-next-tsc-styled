@@ -5,9 +5,11 @@ import Spacer from 'components/Spacer';
 import VisuallyHidden from 'components/VisuallyHidden';
 
 //icons
-import { MdMenu } from 'react-icons/md';
-import { BsSun } from 'react-icons/bs';
+// import { MdMenu } from 'react-icons/md';
+// import { BsSun } from 'react-icons/bs';
 import { BsCollection } from 'react-icons/bs';
+import { SiSurveymonkey } from 'react-icons/si';
+
 // import Brightness2Icon from '@mui/icons-material/Brightness2';
 
 type WithChildren<T = Record<string, unknown>> = T & {
@@ -22,7 +24,7 @@ export default function Header(_props: MainLayoutProps): JSX.Element {
     <Wrapper>
       {/* <PageTitle>Apecessories</PageTitle> */}
       <IconButton style={{ paddingLeft: 0 }}>
-        <MdMenu />
+        <SiSurveymonkey />
         <VisuallyHidden>Menu</VisuallyHidden>
       </IconButton>
       <Spacer size={2} style={{ marginLeft: 'auto' }} />
@@ -31,10 +33,10 @@ export default function Header(_props: MainLayoutProps): JSX.Element {
         <VisuallyHidden>Collections</VisuallyHidden>
       </IconButton>
       {/* <Spacer size={2} /> */}
-      <IconButton style={{ paddingRight: 0 }}>
+      {/* <IconButton style={{ paddingRight: 0 }}>
         <BsSun />
         <VisuallyHidden>Light Dark Toggle</VisuallyHidden>
-      </IconButton>
+      </IconButton> */}
       {/* <Spacer size={2} /> */}
     </Wrapper>
   );
