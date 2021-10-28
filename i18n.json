@@ -4,6 +4,8 @@
   "pages": {
     "*": ["common", "error"],
     "/": ["home"],
-    "/collections": ["collections"]
+    "/collections": ["collections"],
+    "/collections/grills": ["grills"],
+    "/collections/pills": ["pills"]
   }
 }

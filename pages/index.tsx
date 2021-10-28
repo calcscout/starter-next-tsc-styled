@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
@@ -9,7 +9,8 @@ import Ape126 from '../public/img/apes/original/126.png';
 import Layer1 from '../public/img/accessories/grills/mouth-grin/outer-fill/gold.png';
 import Layer2 from '../public/img/accessories/grills/mouth-grin/inner-fill/red.png';
 import Layer3 from '../public/img/accessories/grills/mouth-grin/inner-fill/hacky.png';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 // import { QUERIES } from 'constants/constants';
 
 import styled from 'styled-components';
@@ -28,15 +29,7 @@ export default function Home(): JSX.Element {
       ]
     };
 
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start((i) => ({
-      opacity: 1,
-      // x: 100,
-      transition: { delay: i * 2, duration: 2, repeatType: 'reverse', repeat: Infinity }
-    }));
-  }, []);
+  const router = useRouter();
 
   return (
     <>
@@ -54,21 +47,33 @@ export default function Home(): JSX.Element {
           </CaptionTypography>
           <Spacer axis="vertical" size={1} />
           <CombinationWrapper>
-            <ImageWrapper>
+            <ImageWrapper animate={{ opacity: 0.4 }} transition={{ delay: 2, duration: 2 }}>
               <Image src={Ape126} alt="Ape 126" width={631} height={631} placeholder="blur" />
             </ImageWrapper>
-            <LayerWrapper custom={1} animate={controls}>
+
+            <LayerWrapper
+              animate={{ opacity: [0, 1, 1, 1, 1, 1, 1, 1, 0] }}
+              transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
+            >
               <LayerOneImage src={Layer1} alt="Grill outer fill gold" width={631} height={631} />
             </LayerWrapper>
-            <LayerWrapper custom={2} animate={controls}>
+
+            <LayerWrapper
+              animate={{ opacity: [0, 0, 1, 1, 1, 1, 1, 0, 0] }}
+              transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
+            >
               <LayerOneImage src={Layer2} alt="Grill inner fill red" width={631} height={631} />
             </LayerWrapper>
-            <LayerWrapper custom={3} animate={controls}>
+
+            <LayerWrapper
+              animate={{ opacity: [0, 0, 0, 1, 1, 1, 0, 0, 0] }}
+              transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
+            >
               <LayerOneImage src={Layer3} alt="Grill inner fill hacky" width={631} height={631} />
             </LayerWrapper>
           </CombinationWrapper>
           <Spacer axis="vertical" size={12} />
-          <StyledButton>Explore</StyledButton>
+          <StyledButton onClick={() => router.push('/collections')}>Explore</StyledButton>
         </Wrapper>
       </MainLayout>
     </>
@@ -82,13 +87,6 @@ const Wrapper = styled.div`
   gap: '4px';
 `;
 
-// const Caption = styled(Typography)`
-//   font-size: 1.1rem;
-//   @media ${QUERIES.iSEAndUp} {
-//     font-size: 1.7rem;
-//   }
-// `;
-
 const CombinationWrapper = styled.div`
   position: relative;
   width: 60vmin;
@@ -97,7 +95,8 @@ const CombinationWrapper = styled.div`
   max-height: 631px;
 `;
 
-const ImageWrapper = styled.div`
+const ImageWrapper = styled(motion.div)`
+  opacity: 1;
   background-color: transparent;
   border-radius: 24px;
   display: flex;
