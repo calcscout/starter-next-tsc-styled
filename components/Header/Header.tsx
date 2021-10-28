@@ -32,12 +32,6 @@ export default function Header(_props: MainLayoutProps): JSX.Element {
         <BsCollection />
         <VisuallyHidden>Collections</VisuallyHidden>
       </IconButton>
-      {/* <Spacer size={2} /> */}
-      {/* <IconButton style={{ paddingRight: 0 }}>
-        <BsSun />
-        <VisuallyHidden>Light Dark Toggle</VisuallyHidden>
-      </IconButton> */}
-      {/* <Spacer size={2} /> */}
     </Wrapper>
   );
 }

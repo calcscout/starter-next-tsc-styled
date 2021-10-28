@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-//components
-// import IconButton from 'components/IconButton';
-
-//icons
-// import { SiSurveymonkey } from 'react-icons/si';
-
-//components
-
 type ComponentProps = {
   pageTitle?: string;
 };
@@ -21,9 +13,6 @@ export default function Footer(_props: ComponentProps): JSX.Element {
         Apecessories{' '}
       </span>
       &nbsp;
-      {/* <IconButton style={{ fontSize: '20px' }}>
-        <SiSurveymonkey />
-      </IconButton> */}
     </Wrapper>
   );
 }
