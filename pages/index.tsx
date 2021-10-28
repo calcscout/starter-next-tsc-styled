@@ -21,7 +21,7 @@ export default function Home(): JSX.Element {
     og = {
       images: [
         {
-          url: `https://www.apecessories.com/img/og/og-square-logo-text-slogan-${lang}.png`,
+          url: `https://apecessories.vercel.app/img/og/og-square-logo-text-slogan-${lang}.png`,
           width: 800,
           height: 800,
           alt: t('og-image-alt')

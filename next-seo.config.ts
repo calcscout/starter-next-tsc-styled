@@ -8,7 +8,7 @@ const SEO = {
     description: 'Apecessorize your Ape',
     images: [
       {
-        url: 'https://www.apecessories.com/img/og/og-square-logo-text-slogan.png',
+        url: 'https://www.apecessories.com/img/og/og-square-logo-text-slogan-en.png',
         width: 800,
         height: 800,
         alt: 'Apecessories | apecessorize your Ape'
