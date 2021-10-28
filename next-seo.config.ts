@@ -3,12 +3,12 @@ const SEO = {
   titleTemplate: '%s | Apecessories',
   description: 'Apecessorize your Ape',
   openGraph: {
-    url: 'https://www.apecessories.com',
+    url: 'https://apecessories.vercel.app',
     title: 'Apecessories',
     description: 'Apecessorize your Ape',
     images: [
       {
-        url: 'https://www.apecessories.com/img/og/og-square-logo-text-slogan-en.png',
+        url: 'https://apecessories.vercel.app/img/og/og-square-logo-text-slogan-en.png',
         width: 800,
         height: 800,
         alt: 'Apecessories | apecessorize your Ape'
