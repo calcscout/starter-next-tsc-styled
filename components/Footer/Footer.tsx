@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
 type ComponentProps = {
   pageTitle?: string;
@@ -10,7 +11,9 @@ export default function Footer(_props: ComponentProps): JSX.Element {
       {`© ${new Date().getFullYear()}`} &nbsp;
       <span className="underlined" style={{ cursor: 'pointer' }}>
         {' '}
-        Apecessories{' '}
+        <Link href="/">
+          <StyledLink>Apecessories </StyledLink>
+        </Link>{' '}
       </span>
       &nbsp;
     </Wrapper>
@@ -26,3 +29,5 @@ const Wrapper = styled.footer`
   background-color: transparent;
   margin-top: auto;
 `;
+
+const StyledLink = styled.a``;

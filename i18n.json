@@ -3,6 +3,7 @@
   "defaultLocale": "en",
   "pages": {
     "*": ["common", "error"],
-    "/": ["home"]
+    "/": ["home"],
+    "/collections": ["collections"]
   }
 }

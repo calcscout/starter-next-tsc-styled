@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 //components
 import Spacer from 'components/Spacer';
@@ -20,15 +21,16 @@ type MainLayoutProps = WithChildren<{
 }>;
 
 export default function Header(_props: MainLayoutProps): JSX.Element {
+  const router = useRouter();
   return (
     <Wrapper>
       {/* <PageTitle>Apecessories</PageTitle> */}
-      <IconButton style={{ paddingLeft: 0 }}>
+      <IconButton onClick={() => router.push('/')} style={{ paddingLeft: 0 }}>
         <SiSurveymonkey />
         <VisuallyHidden>Menu</VisuallyHidden>
       </IconButton>
       <Spacer size={2} style={{ marginLeft: 'auto' }} />
-      <IconButton>
+      <IconButton onClick={() => router.push('/collections')}>
         <BsCollection />
         <VisuallyHidden>Collections</VisuallyHidden>
       </IconButton>
