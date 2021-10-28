@@ -49,9 +49,9 @@ export default function Home(): JSX.Element {
 
       <MainLayout>
         <Wrapper>
-          <Typography variant="h6" align="right">
+          <CaptionTypography variant="h4" align="center">
             APECESSORIZE YOUR APE
-          </Typography>
+          </CaptionTypography>
           <Spacer axis="vertical" size={1} />
           <CombinationWrapper>
             <ImageWrapper>
@@ -128,5 +128,9 @@ const LayerOneImage = styled(Image)`
 const StyledButton = styled(Button)`
   border-radius: 9999px;
   width: 100%;
+  max-width: 60vmin;
+`;
+
+const CaptionTypography = styled(Typography)`
   max-width: 60vmin;
 `;

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { ComponentProps } from 'react';
 
+import { QUERIES } from 'constants/constants';
+
 type WithChildren<T = Record<string, unknown>> = T & {
   children?: React.ReactNode;
 };
@@ -170,8 +172,8 @@ const responsiveSizes = {
   h6: {
     mobile: '1.125rem',
     smUp: '1.25rem',
-    mdUp: '1.25rem',
-    lgUp: '1.25rem'
+    mdUp: '1.30rem',
+    lgUp: '1.35rem'
   },
   subtitle1: {
     mobile: '1rem',
@@ -255,6 +257,15 @@ const H1 = styled.h1`
   line-height: ${lineHeight.h1};
   margin: 0px 0px 30px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h1.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h1.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h1.lgUp};
+  }
 `;
 const H2 = styled.h2`
   font-size: ${responsiveSizes.h2.mobile};
@@ -262,6 +273,15 @@ const H2 = styled.h2`
   line-height: ${lineHeight.h2};
   margin: 0px 0px 20px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h2.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h2.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h2.lgUp};
+  }
 `;
 const H3 = styled.h3`
   font-size: ${responsiveSizes.h3.mobile};
@@ -269,6 +289,15 @@ const H3 = styled.h3`
   line-height: ${lineHeight.h3};
   margin: 0px 0px 17px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h3.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h3.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h3.lgUp};
+  }
 `;
 const H4 = styled.h5`
   font-size: ${responsiveSizes.h4.mobile};
@@ -276,6 +305,15 @@ const H4 = styled.h5`
   line-height: ${lineHeight.h4};
   margin: 0px 0px 12px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h4.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h4.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h4.lgUp};
+  }
 `;
 const H5 = styled.h6`
   font-size: ${responsiveSizes.h5.mobile};
@@ -283,6 +321,15 @@ const H5 = styled.h6`
   line-height: ${lineHeight.h5};
   margin: 0px 0px 8px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h5.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h5.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h5.lgUp};
+  }
 `;
 const H6 = styled.h6`
   font-size: ${responsiveSizes.h6.mobile};
@@ -290,6 +337,15 @@ const H6 = styled.h6`
   line-height: ${lineHeight.h6};
   margin: 0px 0px 7px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.h6.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.h6.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.h6.lgUp};
+  }
 `;
 const Subtitle1 = styled.div`
   font-size: ${responsiveSizes.subtitle1.mobile};
@@ -297,6 +353,15 @@ const Subtitle1 = styled.div`
   line-height: ${lineHeight.subtitle1};
   margin: 0px 0px 6px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.subtitle1.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.subtitle1.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.subtitle1.lgUp};
+  }
 `;
 const Subtitle2 = styled.div`
   font-size: ${responsiveSizes.subtitle2.mobile};
@@ -304,6 +369,15 @@ const Subtitle2 = styled.div`
   line-height: ${lineHeight.subtitle2};
   margin: 0px 0px 5px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.subtitle2.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.subtitle2.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.subtitle2.lgUp};
+  }
 `;
 const Body1 = styled.p`
   font-size: ${responsiveSizes.body1.mobile};
@@ -311,6 +385,15 @@ const Body1 = styled.p`
   line-height: ${lineHeight.body1};
   margin: 0px 0px 6px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.body1.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.body1.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.body1.lgUp};
+  }
 `;
 const Body2 = styled.p`
   font-size: ${responsiveSizes.body2.mobile};
@@ -318,6 +401,15 @@ const Body2 = styled.p`
   line-height: ${lineHeight.body2};
   margin: 0px 0px 5px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.body2.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.body2.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.body2.lgUp};
+  }
 `;
 const Button = styled.span`
   text-transform: uppercase;
@@ -326,6 +418,15 @@ const Button = styled.span`
   line-height: ${lineHeight.button};
   margin: 0px 0px 5px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.button.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.button.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.button.lgUp};
+  }
 `;
 const Caption = styled.span`
   font-size: ${responsiveSizes.caption.mobile};
@@ -333,6 +434,15 @@ const Caption = styled.span`
   line-height: ${lineHeight.caption};
   margin: 0px 0px 4px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.caption.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.caption.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.caption.lgUp};
+  }
 `;
 const Overline = styled.span`
   text-transform: uppercase;
@@ -341,4 +451,13 @@ const Overline = styled.span`
   line-height: ${lineHeight.overline};
   margin: 0px 0px 4px 0px;
   text-align: var(--align);
+  @media ${QUERIES.smUp} {
+    font-size: ${responsiveSizes.overline.smUp};
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: ${responsiveSizes.overline.mdUp};
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: ${responsiveSizes.overline.lgUp};
+  }
 `;

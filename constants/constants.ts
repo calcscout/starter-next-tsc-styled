@@ -36,11 +36,11 @@ export const QUERIES = {
   mdAndDown: `(max-width: ${BREAKPOINTS.md / 16}rem)`,
   lgAndDown: `(max-width: ${BREAKPOINTS.lg / 16}rem)`,
   xlAndDown: `(max-width: ${BREAKPOINTS.xl / 16}rem)`,
-  iSEAndUp: `(min-width: ${BREAKPOINTS.iSE / 16}rem)`,
+  iSEUp: `(min-width: ${BREAKPOINTS.iSE / 16}rem)`,
   i8AndUp: `(min-width: ${BREAKPOINTS.i8 / 16}rem)`,
-  i8PlusAndUp: `(min-width: ${BREAKPOINTS.i8Plus / 16}rem)`,
-  smAndUp: `(min-width: ${BREAKPOINTS.sm / 16}rem)`,
-  mdAndUp: `(min-width: ${BREAKPOINTS.md / 16}rem)`,
-  lgAndUp: `(min-width: ${BREAKPOINTS.lg / 16}rem)`,
-  xlAndUp: `(min-width: ${BREAKPOINTS.xl / 16}rem)`
+  i8PlusUp: `(min-width: ${BREAKPOINTS.i8Plus / 16}rem)`,
+  smUp: `(min-width: ${BREAKPOINTS.sm / 16}rem)`,
+  mdUp: `(min-width: ${BREAKPOINTS.md / 16}rem)`,
+  lgUp: `(min-width: ${BREAKPOINTS.lg / 16}rem)`,
+  xlUp: `(min-width: ${BREAKPOINTS.xl / 16}rem)`
 };
