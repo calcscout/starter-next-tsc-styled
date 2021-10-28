@@ -1,24 +1,24 @@
 const SEO = {
-  title: 'calcscout boilerplate',
-  titleTemplate: '%s | calcscout',
-  description: 'Template by calcscout',
+  title: 'Apecessories',
+  titleTemplate: '%s | Apecessories',
+  description: 'Apecessorize your Ape',
   openGraph: {
-    url: 'https://www.calcscout.com',
-    title: 'calcscout',
-    description: 'One stop for all of your on-chain demands',
+    url: 'https://www.apecessories.com',
+    title: 'Apecessories',
+    description: 'Apecessorize your Ape',
     images: [
       {
-        url: 'https://www.calcscout.com/img/og/og-square-logo-text-slogan.png',
+        url: 'https://www.apecessories.com/img/og/og-square-logo-text-slogan.png',
         width: 800,
         height: 800,
-        alt: 'calcscout | your on-chain solution'
+        alt: 'Apecessories | apecessorize your Ape'
       }
     ],
-    site_name: 'calcscout'
+    site_name: 'Apecessories'
   },
   twitter: {
-    handle: '@calcscout',
-    site: '@calcscout',
+    handle: '@apecessories',
+    site: '@apecessories',
     cardType: 'summary_large_image'
   }
 };

@@ -5,7 +5,7 @@ import prettier from 'prettier';
 const locales = ['en', 'ru', 'de', 'it'];
 
 const getDate = new Date().toISOString();
-const AWESOME_DOMAIN = 'https://calcscout.com';
+const AWESOME_DOMAIN = 'https://apecessories.com';
 const formatted = (sitemap) => prettier.format(sitemap, { parser: 'html' });
 
 const generateSitemap = async () => {

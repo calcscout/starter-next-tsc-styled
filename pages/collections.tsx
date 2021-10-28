@@ -13,7 +13,7 @@ export default function Collections(): JSX.Element {
     og = {
       images: [
         {
-          url: `https://www.calcscout.com/img/og/og-square-logo-text-slogan-${lang}.png`,
+          url: `https://www.apecessories.com/img/og/og-square-logo-text-slogan-${lang}.png`,
           width: 800,
           height: 800,
           alt: t('og-image-alt')

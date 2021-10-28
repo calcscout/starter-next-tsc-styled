@@ -11,7 +11,7 @@ const localeTerritory = {
 };
 
 function NextSeoHoc(props: NextSeoProps): JSX.Element {
-  const domain = 'https://www.calcscout.com',
+  const domain = 'https://www.apecessories.com',
     router = useRouter(),
     { locale, locales } = useRouter(),
     url = router && router.asPath ? router.asPath : undefined,
