@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { QUERIES } from 'constants/constants';
 
 const IconButton = styled.button`
   display: inline-block;
@@ -30,6 +31,15 @@ const IconButton = styled.button`
 
   &:active {
     transform: scale(0.99);
+  }
+  @media ${QUERIES.smUp} {
+    font-size: 1.2rem;
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: 1.3rem;
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: 1.4rem;
   }
 `;
 
