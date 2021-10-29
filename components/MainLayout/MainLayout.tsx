@@ -12,11 +12,11 @@ type MainLayoutProps = WithChildren<{
 }>;
 
 export default function MainLayout(props: MainLayoutProps): JSX.Element {
-  const { children } = props;
+  const { children, pageTitle } = props;
 
   return (
     <>
-      <Header />
+      <Header pageTitle={pageTitle} />
       <Main>{children}</Main>
       <Footer />
     </>

@@ -27,7 +27,7 @@ export default function Grills(): JSX.Element {
         titleTemplate="%s"
       />
 
-      <MainLayout>
+      <MainLayout pageTitle="GRILLS NFT collection">
         <Wrapper>
           <CaptionTypography variant="h5" align="center">
             Page in Development

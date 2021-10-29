@@ -5,7 +5,7 @@ import MainLayout from 'components/MainLayout';
 import Image from 'next/image';
 import Button from 'components/Button';
 import Spacer from 'components/Spacer';
-import Ape126 from '../public/img/apes/original/126.png';
+import Ape126 from '../public/img/apes/original/126-grin.png';
 import Layer1 from '../public/img/accessories/grills/mouth-grin/outer-fill/gold.png';
 import Layer2 from '../public/img/accessories/grills/mouth-grin/inner-fill/red.png';
 import Layer3 from '../public/img/accessories/grills/mouth-grin/inner-fill/hacky.png';
@@ -40,11 +40,9 @@ export default function Home(): JSX.Element {
         titleTemplate="%s"
       />
 
-      <MainLayout>
+      <MainLayout pageTitle="Apecessorize your Ape">
         <Wrapper>
-          <CaptionTypography variant="h4" align="center">
-            APECESSORIZE YOUR APE
-          </CaptionTypography>
+          <CaptionTypography variant="h4" align="center"></CaptionTypography>
           <Spacer axis="vertical" size={1} />
           <CombinationWrapper>
             <ImageWrapper animate={{ opacity: 0.4 }} transition={{ delay: 2, duration: 2 }}>

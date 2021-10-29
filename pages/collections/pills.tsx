@@ -27,7 +27,7 @@ export default function Pills(): JSX.Element {
         titleTemplate="%s"
       />
 
-      <MainLayout>
+      <MainLayout pageTitle="PILLS NFT collection">
         <Wrapper>
           <CaptionTypography variant="h5" align="center">
             Page in Development

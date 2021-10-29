@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 //components
-import Spacer from 'components/Spacer';
+// import Spacer from 'components/Spacer';
 import VisuallyHidden from 'components/VisuallyHidden';
 
 //icons
@@ -10,6 +10,7 @@ import VisuallyHidden from 'components/VisuallyHidden';
 // import { BsSun } from 'react-icons/bs';
 import { BsCollection } from 'react-icons/bs';
 import { SiSurveymonkey } from 'react-icons/si';
+import Typography from 'components/Typography';
 
 // import Brightness2Icon from '@mui/icons-material/Brightness2';
 
@@ -20,7 +21,8 @@ type MainLayoutProps = WithChildren<{
   pageTitle?: string;
 }>;
 
-export default function Header(_props: MainLayoutProps): JSX.Element {
+export default function Header(props: MainLayoutProps): JSX.Element {
+  const { pageTitle } = props;
   const router = useRouter();
   return (
     <Wrapper>
@@ -29,7 +31,10 @@ export default function Header(_props: MainLayoutProps): JSX.Element {
         <SiSurveymonkey />
         <VisuallyHidden>Menu</VisuallyHidden>
       </IconButton>
-      <Spacer size={2} style={{ marginLeft: 'auto' }} />
+      {/* <Spacer size={2} style={{ marginLeft: 'auto' }} /> */}
+      <PageTitle variant="h6" align="center">
+        {pageTitle}
+      </PageTitle>
       <IconButton onClick={() => router.push('/collections')}>
         <BsCollection />
         <VisuallyHidden>Collections</VisuallyHidden>
@@ -46,6 +51,13 @@ const Wrapper = styled.header`
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
+`;
+
+const PageTitle = styled(Typography)`
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const IconButton = styled.button`
