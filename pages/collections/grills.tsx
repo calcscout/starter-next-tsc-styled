@@ -6,8 +6,10 @@ import { motion } from 'framer-motion';
 
 import styled from 'styled-components';
 import Typography from 'components/Typography';
+import Button from 'components/Button';
 
 import Ape126 from '../../public/img/apes/original/126-grin.png';
+import { QUERIES } from 'constants/constants';
 
 export default function Grills(): JSX.Element {
   const { t, lang } = useTranslation('grills'),
@@ -52,6 +54,7 @@ export default function Grills(): JSX.Element {
           </div>
           <ApeCard style={{ gridArea: 'grill-details' }}>Ape Card</ApeCard>
           <GrillCard style={{ gridArea: 'ape-details' }}>Grill Card</GrillCard>
+          <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
         </GridWrapper>
       </MainLayout>
     </>
@@ -70,14 +73,27 @@ const GridWrapper = styled.div`
     'ape-details';
   gap: 4px;
   align-items: center;
+  column-gap: 16px;
+  row-gap: 6px;
+  /* width: min(100%, 60vmin); */
+  justify-items: center;
+  @media ${QUERIES.smUp} {
+    grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      'ape-selector . grill-selector'
+      'ape-image button accessory-image'
+      'grill-details button ape-details';
+  }
 `;
 
 const CombinationWrapper = styled.div`
+  justify-self: center;
   position: relative;
-  width: 60vmin;
-  height: 60vmin;
-  max-width: 631px;
-  max-height: 631px;
+  width: min(100%, 60vmin);
+  /* height: 60vmin; */
+  max-width: 300px;
+  max-height: 300px;
 `;
 
 const ImageWrapper = styled(motion.div)`
@@ -90,13 +106,29 @@ const ImageWrapper = styled(motion.div)`
   overflow: hidden;
 `;
 
-const ApeCard = styled.div`
-  width: 100%;
+const Card = styled.div`
+  width: min(100%, 60vmin);
   min-height: 145px;
-  background-color: white;
+  max-width: 300px;
+  background-color: var(--color-gray-700);
+  border-radius: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-const GrillCard = styled.div`
-  width: 100%;
-  min-height: 145px;
-  background-color: white;
+
+const ApeCard = styled(Card)``;
+const GrillCard = styled(Card)``;
+
+const TryApecessoryButton = styled(Button)`
+  display: none;
+  border-radius: 9999px;
+  width: 90px;
+  height: 100%;
+  @media ${QUERIES.smUp} {
+    display: revert;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
