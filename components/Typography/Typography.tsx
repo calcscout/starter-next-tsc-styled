@@ -255,7 +255,7 @@ const H1 = styled.h1`
   font-size: ${responsiveSizes.h1.mobile};
   font-weight: ${fontWeight.h1};
   line-height: ${lineHeight.h1};
-  margin: 0px 0px 30px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h1.smUp};
@@ -271,7 +271,7 @@ const H2 = styled.h2`
   font-size: ${responsiveSizes.h2.mobile};
   font-weight: ${fontWeight.h2};
   line-height: ${lineHeight.h2};
-  margin: 0px 0px 20px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h2.smUp};
@@ -287,7 +287,7 @@ const H3 = styled.h3`
   font-size: ${responsiveSizes.h3.mobile};
   font-weight: ${fontWeight.h3};
   line-height: ${lineHeight.h3};
-  margin: 0px 0px 17px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h3.smUp};
@@ -303,7 +303,7 @@ const H4 = styled.h5`
   font-size: ${responsiveSizes.h4.mobile};
   font-weight: ${fontWeight.h4};
   line-height: ${lineHeight.h4};
-  margin: 0px 0px 12px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h4.smUp};
@@ -319,7 +319,7 @@ const H5 = styled.h6`
   font-size: ${responsiveSizes.h5.mobile};
   font-weight: ${fontWeight.h5};
   line-height: ${lineHeight.h5};
-  margin: 0px 0px 8px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h5.smUp};
@@ -335,7 +335,7 @@ const H6 = styled.h6`
   font-size: ${responsiveSizes.h6.mobile};
   font-weight: ${fontWeight.h6};
   line-height: ${lineHeight.h6};
-  margin: 0px 0px 7px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.h6.smUp};
@@ -351,7 +351,7 @@ const Subtitle1 = styled.div`
   font-size: ${responsiveSizes.subtitle1.mobile};
   font-weight: ${fontWeight.subtitle1};
   line-height: ${lineHeight.subtitle1};
-  margin: 0px 0px 6px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.subtitle1.smUp};
@@ -367,7 +367,7 @@ const Subtitle2 = styled.div`
   font-size: ${responsiveSizes.subtitle2.mobile};
   font-weight: ${fontWeight.subtitle2};
   line-height: ${lineHeight.subtitle2};
-  margin: 0px 0px 5px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.subtitle2.smUp};
@@ -383,7 +383,7 @@ const Body1 = styled.p`
   font-size: ${responsiveSizes.body1.mobile};
   font-weight: ${fontWeight.body1};
   line-height: ${lineHeight.body1};
-  margin: 0px 0px 6px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.body1.smUp};
@@ -399,7 +399,7 @@ const Body2 = styled.p`
   font-size: ${responsiveSizes.body2.mobile};
   font-weight: ${fontWeight.body2};
   line-height: ${lineHeight.body2};
-  margin: 0px 0px 5px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.body2.smUp};
@@ -416,7 +416,7 @@ const Button = styled.span`
   font-size: ${responsiveSizes.button.mobile};
   font-weight: ${fontWeight.button};
   line-height: ${lineHeight.button};
-  margin: 0px 0px 5px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.button.smUp};
@@ -432,7 +432,7 @@ const Caption = styled.span`
   font-size: ${responsiveSizes.caption.mobile};
   font-weight: ${fontWeight.caption};
   line-height: ${lineHeight.caption};
-  margin: 0px 0px 4px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.caption.smUp};
@@ -449,7 +449,7 @@ const Overline = styled.span`
   font-size: ${responsiveSizes.overline.mobile};
   font-weight: ${fontWeight.overline};
   line-height: ${lineHeight.overline};
-  margin: 0px 0px 4px 0px;
+  margin: 0px;
   text-align: var(--align);
   @media ${QUERIES.smUp} {
     font-size: ${responsiveSizes.overline.smUp};
