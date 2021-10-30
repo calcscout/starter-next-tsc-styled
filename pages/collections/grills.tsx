@@ -9,6 +9,7 @@ import Typography from 'components/Typography';
 import Button from 'components/Button';
 
 import Ape126 from '../../public/img/apes/original/126-grin.png';
+import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
 import { QUERIES } from 'constants/constants';
 
 export default function Grills(): JSX.Element {
@@ -41,11 +42,22 @@ export default function Grills(): JSX.Element {
             </Typography>
           </div>
 
-          <CombinationWrapper style={{ gridArea: 'ape-image' }}>
-            <ImageWrapper animate={{ opacity: 0.4 }} transition={{ delay: 2, duration: 2 }}>
+          <ApeWrapper style={{ gridArea: 'ape-image' }}>
+            <ImageWrapper>
               <Image src={Ape126} alt="Ape 126" width={631} height={631} placeholder="blur" />
             </ImageWrapper>
-          </CombinationWrapper>
+          </ApeWrapper>
+          <ApecessoryWrapper style={{ gridArea: 'apecessory-image' }}>
+            <LayerWrapper
+              animate={{ opacity: [0, 0.1, 0] }}
+              transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
+            >
+              <LayerOneImage src={Ape126} alt="Grill inner fill red" width={631} height={631} />
+            </LayerWrapper>
+            <ImageWrapper>
+              <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
+            </ImageWrapper>
+          </ApecessoryWrapper>
 
           <div style={{ gridArea: 'grill-selector' }}>
             <Typography variant="h5" align="center">
@@ -71,29 +83,40 @@ const GridWrapper = styled.div`
     'grill-selector'
     'grill-details'
     'ape-details';
-  gap: 4px;
   align-items: center;
-  column-gap: 16px;
   row-gap: 6px;
-  /* width: min(100%, 60vmin); */
   justify-items: center;
+  width: 80vmin;
   @media ${QUERIES.smUp} {
-    grid-template-columns: minmax(0, 1fr) 90px minmax(0, 1fr);
+    grid-template-columns: 1fr 90px 1fr;
     grid-template-rows: auto auto auto;
     grid-template-areas:
       'ape-selector . grill-selector'
-      'ape-image button accessory-image'
+      'ape-image button apecessory-image'
       'grill-details button ape-details';
+    column-gap: 16px;
+    width: 95vmin;
   }
 `;
 
-const CombinationWrapper = styled.div`
+const ApeWrapper = styled.div`
   justify-self: center;
   position: relative;
-  width: min(100%, 60vmin);
-  /* height: 60vmin; */
   max-width: 300px;
   max-height: 300px;
+`;
+
+const ApecessoryWrapper = styled.div`
+  display: none;
+  @media ${QUERIES.smUp} {
+    display: revert;
+    justify-self: center;
+    position: relative;
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid var(--color-gray-700);
+    border-radius: 23px;
+  }
 `;
 
 const ImageWrapper = styled(motion.div)`
@@ -106,12 +129,31 @@ const ImageWrapper = styled(motion.div)`
   overflow: hidden;
 `;
 
+const LayerWrapper = styled(motion.div)`
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const LayerOneImage = styled(Image)`
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
+
 const Card = styled.div`
-  width: min(100%, 60vmin);
+  width: 100%;
   min-height: 145px;
   max-width: 300px;
   background-color: var(--color-gray-700);
-  border-radius: 23px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

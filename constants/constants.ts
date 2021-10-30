@@ -29,15 +29,15 @@ export const BREAKPOINTS = {
 };
 
 export const QUERIES = {
-  iSEAndDown: `(max-width: ${BREAKPOINTS.iSE / 16}rem)`,
-  i8AndDown: `(max-width: ${BREAKPOINTS.i8 / 16}rem)`,
-  i8PlusAndDown: `(max-width: ${BREAKPOINTS.i8Plus / 16}rem)`,
-  smAndDown: `(max-width: ${BREAKPOINTS.sm / 16}rem)`,
-  mdAndDown: `(max-width: ${BREAKPOINTS.md / 16}rem)`,
-  lgAndDown: `(max-width: ${BREAKPOINTS.lg / 16}rem)`,
-  xlAndDown: `(max-width: ${BREAKPOINTS.xl / 16}rem)`,
+  iSEDown: `(max-width: ${BREAKPOINTS.iSE / 16}rem)`,
+  i8Down: `(max-width: ${BREAKPOINTS.i8 / 16}rem)`,
+  i8PlusDown: `(max-width: ${BREAKPOINTS.i8Plus / 16}rem)`,
+  smDown: `(max-width: ${BREAKPOINTS.sm / 16}rem)`,
+  mdDown: `(max-width: ${BREAKPOINTS.md / 16}rem)`,
+  lgDown: `(max-width: ${BREAKPOINTS.lg / 16}rem)`,
+  xlDown: `(max-width: ${BREAKPOINTS.xl / 16}rem)`,
   iSEUp: `(min-width: ${BREAKPOINTS.iSE / 16}rem)`,
-  i8AndUp: `(min-width: ${BREAKPOINTS.i8 / 16}rem)`,
+  i8Up: `(min-width: ${BREAKPOINTS.i8 / 16}rem)`,
   i8PlusUp: `(min-width: ${BREAKPOINTS.i8Plus / 16}rem)`,
   smUp: `(min-width: ${BREAKPOINTS.sm / 16}rem)`,
   mdUp: `(min-width: ${BREAKPOINTS.md / 16}rem)`,
