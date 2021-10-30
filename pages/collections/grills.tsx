@@ -37,8 +37,8 @@ export default function Grills(): JSX.Element {
       <MainLayout pageTitle="GRILLS NFT collection">
         <GridWrapper>
           <div style={{ gridArea: 'ape-selector' }}>
-            <Typography variant="h5" align="center">
-              Ape Selector
+            <Typography variant="h6" align="center">
+              Ape Selector WIP
             </Typography>
           </div>
 
@@ -60,8 +60,8 @@ export default function Grills(): JSX.Element {
           </ApecessoryWrapper>
 
           <div style={{ gridArea: 'grill-selector' }}>
-            <Typography variant="h5" align="center">
-              Grill Selector
+            <Typography variant="h6" align="center">
+              Grill Selector WIP
             </Typography>
           </div>
           <ApeCard style={{ gridArea: 'grill-details' }}>Ape Card</ApeCard>
