@@ -71,7 +71,7 @@ export default function Home(): JSX.Element {
             </LayerWrapper>
           </CombinationWrapper>
           <Spacer axis="vertical" size={12} />
-          <StyledButton onClick={() => router.push('/collections')}>Explore</StyledButton>
+          <StyledButton onClick={() => router.push('/collections/grills')}>Explore</StyledButton>
         </Wrapper>
       </MainLayout>
     </>

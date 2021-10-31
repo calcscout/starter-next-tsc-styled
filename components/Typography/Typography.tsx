@@ -28,80 +28,81 @@ type TypographyProps = WithChildren<{
   variant?: variantsTypes;
   align?: 'center' | 'inherit' | 'justify' | 'left' | 'right';
   as?: string;
+  className?: string;
   // [x: string]: any;
 }> &
   ComponentProps<typeof H1>;
 
 export default function Typography(props: TypographyProps) {
-  const { variant = 'body1', align = 'inherit', children, ...delegated } = props;
+  const { variant = 'body1', align = 'inherit', className = '', children, ...delegated } = props;
 
   switch (variant) {
     case 'h1':
       return (
-        <H1 style={{ '--align': align }} {...delegated}>
+        <H1 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H1>
       );
       break;
     case 'h2':
       return (
-        <H2 style={{ '--align': align }} {...delegated}>
+        <H2 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H2>
       );
       break;
     case 'h3':
       return (
-        <H3 style={{ '--align': align }} {...delegated}>
+        <H3 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H3>
       );
       break;
     case 'h4':
       return (
-        <H4 style={{ '--align': align }} {...delegated}>
+        <H4 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H4>
       );
       break;
     case 'h5':
       return (
-        <H5 style={{ '--align': align }} {...delegated}>
+        <H5 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H5>
       );
       break;
     case 'h6':
       return (
-        <H6 style={{ '--align': align }} {...delegated}>
+        <H6 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </H6>
       );
       break;
     case 'subtitle1':
       return (
-        <Subtitle1 style={{ '--align': align }} {...delegated}>
+        <Subtitle1 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Subtitle1>
       );
       break;
     case 'subtitle2':
       return (
-        <Subtitle2 style={{ '--align': align }} {...delegated}>
+        <Subtitle2 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Subtitle2>
       );
       break;
     case 'body1':
       return (
-        <Body1 style={{ '--align': align }} {...delegated}>
+        <Body1 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Body1>
       );
       break;
     case 'body2':
       return (
-        <Body2 style={{ '--align': align }} {...delegated}>
+        <Body2 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Body2>
       );
@@ -109,28 +110,28 @@ export default function Typography(props: TypographyProps) {
 
     case 'button':
       return (
-        <Button style={{ '--align': align }} {...delegated}>
+        <Button style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Button>
       );
       break;
     case 'caption1':
       return (
-        <Caption style={{ '--align': align }} {...delegated}>
+        <Caption style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Caption>
       );
       break;
     case 'overline':
       return (
-        <Overline style={{ '--align': align }} {...delegated}>
+        <Overline style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Overline>
       );
       break;
     default:
       return (
-        <Body1 style={{ '--align': align }} {...delegated}>
+        <Body1 style={{ '--align': align }} className={className} {...delegated}>
           {children}
         </Body1>
       );

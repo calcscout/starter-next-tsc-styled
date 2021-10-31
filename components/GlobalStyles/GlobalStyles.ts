@@ -153,10 +153,38 @@ textarea {
   --color-red-500: #ff4545;
   --color-yellow-500: #ffd644;
   --main-container-padding: 16px;
+  --color-axie-gray-1: hsl(226 13% 67%);
+  --color-axie-gray-2: hsl(226 11% 47%);
+  --color-axie-gray-3: hsl(226 16% 27%);
+  --color-axie-gray-4: hsl(229 18% 19%);
+  --color-axie-gray-5: hsl(229 19% 17%); //background
+  --color-axie-gray-6: hsl(228 23% 9%);
+  --color-axie-primary-1: hsl(215 87% 79%);
+  --color-axie-primary-2: hsl(215 87% 70%);
+  --color-axie-primary-3: hsl(215 88% 57%);
+  --color-axie-primary-4: hsl(215 98% 50%);
+  --color-axie-primary-5: hsl(215 100% 36%);
+  --color-axie-primary-6: hsl(218 48% 21%);
+  --color-axie-success-1: #b8ecd5;
+  --color-axie-success-2: #8ae0ba;
+  --color-axie-success-3: #58d49d;
+  --color-axie-success-4: #10c274;
+  --color-axie-success-5: #048a4f;
+  --color-axie-warning-1: #fce2ac;
+  --color-axie-warning-2: #fad076;
+  --color-axie-warning-3: #f8bc3b;
+  --color-axie-warning-4: #f7ac0a;
+  --color-axie-warning-5: #bd850f;
+  --color-axie-danger-1: #feb4b6;
+  --color-axie-danger-2: #f28286;
+  --color-axie-danger-3: #fe4c52;
+  --color-axie-danger-4: #fe383f;
+  --color-axie-danger-5: #be3637;
+
 }
 
 .dark-mode {
-  --bg-primary: var(--color-bg-dark);
+  --bg-primary: var(--color-axie-gray-5);
   --bg-secondary: var(--color-gray-800);
   --text-primary: var(--color-white);
   --text-secondary: var(--color-blueGray-500);

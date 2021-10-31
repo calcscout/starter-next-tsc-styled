@@ -32,7 +32,7 @@ export default function Header(props: MainLayoutProps): JSX.Element {
         <VisuallyHidden>Menu</VisuallyHidden>
       </IconButton>
       {/* <Spacer size={2} style={{ marginLeft: 'auto' }} /> */}
-      <PageTitle variant="h6" align="center">
+      <PageTitle variant="h6" align="center" className="underlined">
         {pageTitle}
       </PageTitle>
       <IconButton onClick={() => router.push('/collections')}>

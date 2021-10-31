@@ -84,7 +84,7 @@ const GridWrapper = styled.div`
     'grill-details'
     'ape-details';
   align-items: center;
-  row-gap: 6px;
+  row-gap: 8px;
   justify-items: center;
   width: 80vmin;
   @media ${QUERIES.smUp} {
@@ -94,8 +94,8 @@ const GridWrapper = styled.div`
       'ape-selector . grill-selector'
       'ape-image button apecessory-image'
       'grill-details button ape-details';
-    column-gap: 16px;
-    width: 95vmin;
+    column-gap: 8px;
+    /* width: 95vmin; */
   }
 `;
 
