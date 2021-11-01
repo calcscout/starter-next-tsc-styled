@@ -6,9 +6,6 @@ import Typography from 'components/Typography';
 import OpenSeaLogo from '../../public/img/OpenSea-Full-Logo(light).svg';
 import VerifiedIcon from '../../public/img/icons/CustomVerifiedIcon.svg';
 import EthLogo from '../../public/img/icons/ethLogo.svg';
-// import { MdVerified } from 'react-icons/md';
-// import { FaEthereum } from 'react-icons/fa';
-// import Spacer from 'components/Spacer';
 
 type ComponentProps = {
   pageTitle?: string;
@@ -16,8 +13,10 @@ type ComponentProps = {
   apeId: number;
 };
 
-export function ApeDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, apeId } = props;
+export default function ApeDetailsCard(props: ComponentProps): JSX.Element {
+  const { style, apeId = 126 } = props;
+  const contractNumber = '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d';
+
   return (
     <Wrapper style={style}>
       <Row>
@@ -44,41 +43,11 @@ export function ApeDetailsCard(props: ComponentProps): JSX.Element {
         <OpenSeaLink
           target="_blank"
           rel="noreferrer"
-          href={`https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}`}
+          href={`https://opensea.io/assets/${contractNumber}/${apeId}`}
         >
           <OpenSeaLogo />
         </OpenSeaLink>
       </LogoWrapper>
-    </Wrapper>
-  );
-}
-
-export function GrillDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, apeId } = props;
-  return (
-    <Wrapper style={style}>
-      <RowGrill>
-        <Typography variant="caption1" style={{ flexBasis: '100px' }}>
-          Owned by
-        </Typography>
-        <EthAddress variant="caption1" align="right">
-          APECESSORIES
-        </EthAddress>
-      </RowGrill>
-      <RowGrill style={{ marginLeft: 'auto' }}>
-        <Typography variant="h4">BUY ON</Typography>
-      </RowGrill>
-      <RowGrill style={{ marginLeft: 'auto' }}>
-        <LogoWrapper style={{ marginLeft: 'auto', alignItems: 'flex-end' }}>
-          <OpenSeaLink
-            target="_blank"
-            rel="noreferrer"
-            href={`https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}`}
-          >
-            <OpenSeaLogo />
-          </OpenSeaLink>
-        </LogoWrapper>
-      </RowGrill>
     </Wrapper>
   );
 }
@@ -102,12 +71,6 @@ const Row = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`;
-
-const RowGrill = styled.div`
-  flex: 1;
-  display: flex;
-  /* justify-content: center; */
 `;
 
 const LogoWrapper = styled.div`

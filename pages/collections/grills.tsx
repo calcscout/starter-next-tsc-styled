@@ -7,7 +7,8 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Typography from 'components/Typography';
 import Button from 'components/Button';
-import { ApeDetailsCard } from 'components/Cards';
+import { ApeDetailsCard, GrillDetailsCard } from 'components/Cards';
+import SelectorApe from 'components/SelectorApe';
 
 import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
@@ -37,11 +38,9 @@ export default function Grills(): JSX.Element {
 
       <MainLayout pageTitle="GRILLS NFT collection">
         <GridWrapper>
-          <div style={{ gridArea: 'ape-selector' }}>
-            <Typography variant="h6" align="center">
-              Ape Selector WIP
-            </Typography>
-          </div>
+          <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
+            <SelectorApe />
+          </SelectorWrapper>
 
           <ApeWrapper style={{ gridArea: 'ape-image' }}>
             <ImageWrapper>
@@ -65,8 +64,8 @@ export default function Grills(): JSX.Element {
               Grill Selector WIP
             </Typography>
           </div>
-          <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
-          <GrillCard style={{ gridArea: 'grill-details' }}>Grill Card</GrillCard>
+          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} />
+          <GrillDetailsCard apeId={126} style={{ gridArea: 'grill-details' }} />
           <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
         </GridWrapper>
       </MainLayout>
@@ -98,6 +97,11 @@ const GridWrapper = styled.div`
     column-gap: 8px;
     /* width: 95vmin; */
   }
+`;
+
+const SelectorWrapper = styled.div`
+  width: 100%;
+  max-width: 300px;
 `;
 
 const ApeWrapper = styled.div`
@@ -148,11 +152,6 @@ const LayerOneImage = styled(Image)`
   top: 0;
   left: 0;
 `;
-
-const Card = styled.div``;
-
-// const ApeCard = styled(Card)``;
-const GrillCard = styled(Card)``;
 
 const TryApecessoryButton = styled(Button)`
   display: none;
