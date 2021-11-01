@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import Typography from 'components/Typography';
 import Button from 'components/Button';
+import { ApeDetailsCard } from 'components/Cards';
 
 import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
@@ -64,8 +65,8 @@ export default function Grills(): JSX.Element {
               Grill Selector WIP
             </Typography>
           </div>
-          <ApeCard style={{ gridArea: 'grill-details' }}>Ape Card</ApeCard>
-          <GrillCard style={{ gridArea: 'ape-details' }}>Grill Card</GrillCard>
+          <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
+          <GrillCard style={{ gridArea: 'grill-details' }}>Grill Card</GrillCard>
           <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
         </GridWrapper>
       </MainLayout>
@@ -93,7 +94,7 @@ const GridWrapper = styled.div`
     grid-template-areas:
       'ape-selector . grill-selector'
       'ape-image button apecessory-image'
-      'grill-details button ape-details';
+      'ape-details button grill-details';
     column-gap: 8px;
     /* width: 95vmin; */
   }
@@ -148,18 +149,9 @@ const LayerOneImage = styled(Image)`
   left: 0;
 `;
 
-const Card = styled.div`
-  width: 100%;
-  min-height: 145px;
-  max-width: 300px;
-  background-color: var(--color-gray-700);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const Card = styled.div``;
 
-const ApeCard = styled(Card)``;
+// const ApeCard = styled(Card)``;
 const GrillCard = styled(Card)``;
 
 const TryApecessoryButton = styled(Button)`
