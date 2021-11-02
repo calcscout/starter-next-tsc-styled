@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
-  const { ape_id } = req.body;
+  const { ape_id } = JSON.parse(req.body);
   console.log('Body:', req.body);
   console.log('Ape_id:', ape_id);
 
