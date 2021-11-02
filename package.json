@@ -20,7 +20,8 @@
     "react-dom": "latest",
     "react-icons": "^4.3.1",
     "react-is": "latest",
-    "styled-components": "latest"
+    "styled-components": "latest",
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@svgr/webpack": "latest",

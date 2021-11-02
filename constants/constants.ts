@@ -44,3 +44,6 @@ export const QUERIES = {
   lgUp: `(min-width: ${BREAKPOINTS.lg / 16}rem)`,
   xlUp: `(min-width: ${BREAKPOINTS.xl / 16}rem)`
 };
+
+export const getApeUri =
+  'https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=';

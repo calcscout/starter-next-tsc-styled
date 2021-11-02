@@ -25,9 +25,13 @@ const withConfig = nextTranslate({
         }
       ]
     });
-
     return config;
   }
 });
 
-module.exports = withConfig;
+module.exports = {
+  ...withConfig,
+  images: {
+    domains: ['lh3.googleusercontent.com']
+  }
+};

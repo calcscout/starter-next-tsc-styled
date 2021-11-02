@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import useSWR from 'swr';
+import { getApeUri } from 'constants/constants';
 
 import styled from 'styled-components';
 import Typography from 'components/Typography';
@@ -13,6 +16,21 @@ import SelectorApe from 'components/SelectorApe';
 import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
 import { QUERIES } from 'constants/constants';
+
+const fetcher = (url: string) =>
+  fetch(url, {
+    method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 
 export default function Grills(): JSX.Element {
   const { t, lang } = useTranslation('grills'),
@@ -26,6 +44,30 @@ export default function Grills(): JSX.Element {
         }
       ]
     };
+
+  const [currentApeId, setCurrentApeId] = useState(126);
+  const [apeImageUrl, setApeImageUrl] = useState(
+    'https://lh3.googleusercontent.com/mv0xKJeyQ71OkWivngYYg0yY6HBNmRz7GCXxzleD0Capjtj_m_m-XL9gIYNftgg2SD4Wy9fWjGvKKpyJDwhpltbq1SdNLynHIuogCg'
+  );
+
+  console.log(`${getApeUri}${currentApeId}`);
+  console.log('image_url:', apeImageUrl);
+
+  const { data, error } = useSWR(
+    `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${currentApeId}`,
+    fetcher
+  );
+
+  console.log('Data received from server:', data);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     setApeImageUrl(data?.image_url);
+  //     console.log('Image url is changed to:', data?.image_url);
+  //   }
+  // }, [apeImageUrl, data]);
+
+  console.log('apeImageUrl:', apeImageUrl);
 
   return (
     <>
@@ -44,7 +86,13 @@ export default function Grills(): JSX.Element {
 
           <ApeWrapper style={{ gridArea: 'ape-image' }}>
             <ImageWrapper>
-              <Image src={Ape126} alt="Ape 126" width={631} height={631} placeholder="blur" />
+              <Image
+                src={apeImageUrl}
+                alt="Ape Image"
+                width={631}
+                height={631}
+                // placeholder="blur"
+              />
             </ImageWrapper>
           </ApeWrapper>
           <ApecessoryWrapper style={{ gridArea: 'apecessory-image' }}>
@@ -66,7 +114,9 @@ export default function Grills(): JSX.Element {
           </div>
           <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} />
           <GrillDetailsCard apeId={126} style={{ gridArea: 'grill-details' }} />
-          <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
+          <TryApecessoryButton onClick={() => setCurrentApeId(40)} style={{ gridArea: 'button' }}>
+            Try Grill
+          </TryApecessoryButton>
         </GridWrapper>
       </MainLayout>
     </>
