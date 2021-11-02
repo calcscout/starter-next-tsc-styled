@@ -9,7 +9,7 @@ import Spacer from 'components/Spacer';
 import Button from 'components/Button';
 
 export default function Database(): JSX.Element {
-  const { t, lang } = useTranslation('pills'),
+  const { t, lang } = useTranslation('database'),
     og = {
       images: [
         {
@@ -25,24 +25,26 @@ export default function Database(): JSX.Element {
   const [counter, setCounter] = useState(1);
 
   async function populateApeDatabase(apes: number) {
-    console.log('Counter equal to:', counter);
+    const start = counter;
     for (let i = 0; i < apes; i++) {
       const response = await fetch('/api/populate-ape-database', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        body: JSON.stringify({ ape_id: `${counter}` }) // body data type must match "Content-Type" header
+        body: JSON.stringify({ ape_id: `${start + i}` }) // body data type must match "Content-Type" header
       });
-      console.log('response:', response);
-      setCounter(counter + 1);
+      if (response.statusText !== 'Created') {
+        break;
+      }
+      setCounter((prevCount) => prevCount + 1);
     }
     return;
   }
 
   async function clearApeDatabase() {
     try {
-      const response = await fetch('/api/clear-ape-database', {
+      await fetch('/api/clear-ape-database', {
         method: 'POST' // *GET, POST, PUT, DELETE, etc.
       });
-      console.log('response:', response);
+      setCounter(1);
     } catch (e) {
       console.log(e);
     }
@@ -58,17 +60,36 @@ export default function Database(): JSX.Element {
         titleTemplate="%s"
       />
 
-      <MainLayout pageTitle="Typography Viewer">
+      <MainLayout pageTitle="Database Control Panel">
         <Wrapper>
           <Typography variant="h6" align="center">
-            Populate Database with 10 apes
+            Database operations
           </Typography>
           <Spacer size={gap} />
           <StyledButton onClick={() => populateApeDatabase(1)}>Populate with 1</StyledButton>
           <Spacer size={gap} />
           <StyledButton onClick={() => populateApeDatabase(5)}>Populate with 5</StyledButton>
           <Spacer size={gap} />
-          <StyledButton onClick={clearApeDatabase}>CLEAR Database</StyledButton>
+          <StyledButton style={{ backgroundColor: 'red' }} onClick={clearApeDatabase}>
+            CLEAR Database
+          </StyledButton>
+          <Spacer size={gap} />
+          <Typography variant="body1" align="center">
+            Counter: {counter}
+          </Typography>
+          <Spacer size={gap} />
+          <StyledButton
+            style={{ backgroundColor: 'var(--color-gray-400)' }}
+            onClick={() => setCounter(1)}
+          >
+            Reset Counter
+          </StyledButton>
+          <Spacer size={gap} />
+          <StyledButton onClick={() => populateApeDatabase(100)}>Populate with 100</StyledButton>
+          <Spacer size={gap} />
+          <StyledButton onClick={() => populateApeDatabase(1000)}>Populate with 1k</StyledButton>
+          <Spacer size={gap} />
+          <StyledButton onClick={() => populateApeDatabase(10000)}>Populate with 10k</StyledButton>
         </Wrapper>
       </MainLayout>
     </>
