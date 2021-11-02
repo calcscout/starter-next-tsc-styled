@@ -5,7 +5,6 @@ import MainLayout from 'components/MainLayout';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useSWR from 'swr';
-import { getApeUri } from 'constants/constants';
 
 import styled from 'styled-components';
 import Typography from 'components/Typography';
@@ -25,9 +24,6 @@ const fetcher = (url: string) =>
     }
   })
     .then((response) => response.json())
-    .then((data) => {
-      console.log('Success:', data);
-    })
     .catch((error) => {
       console.error('Error:', error);
     });
@@ -50,24 +46,16 @@ export default function Grills(): JSX.Element {
     'https://lh3.googleusercontent.com/mv0xKJeyQ71OkWivngYYg0yY6HBNmRz7GCXxzleD0Capjtj_m_m-XL9gIYNftgg2SD4Wy9fWjGvKKpyJDwhpltbq1SdNLynHIuogCg'
   );
 
-  console.log(`${getApeUri}${currentApeId}`);
-  console.log('image_url:', apeImageUrl);
-
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${currentApeId}`,
     fetcher
   );
 
-  console.log('Data received from server:', data);
-
-  // useEffect(() => {
-  //   if (data) {
-  //     setApeImageUrl(data?.image_url);
-  //     console.log('Image url is changed to:', data?.image_url);
-  //   }
-  // }, [apeImageUrl, data]);
-
-  console.log('apeImageUrl:', apeImageUrl);
+  useEffect(() => {
+    if (data) {
+      setApeImageUrl(data?.image_url);
+    }
+  }, [data]);
 
   return (
     <>
