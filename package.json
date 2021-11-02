@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "framer-motion": "latest",
+    "mongoose": "^6.0.12",
     "next": "latest",
     "next-compose-plugins": "latest",
     "next-translate": "latest",
