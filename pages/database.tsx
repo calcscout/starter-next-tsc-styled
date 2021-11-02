@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
@@ -21,14 +22,29 @@ export default function Database(): JSX.Element {
     };
 
   const gap = 16;
+  const [counter, setCounter] = useState(1);
 
   async function populateApeDatabase(apes: number) {
+    console.log('Counter equal to:', counter);
     for (let i = 0; i < apes; i++) {
       const response = await fetch('/api/populate-ape-database', {
         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        body: JSON.stringify({ ape_id: '126' }) // body data type must match "Content-Type" header
+        body: JSON.stringify({ ape_id: `${counter}` }) // body data type must match "Content-Type" header
       });
       console.log('response:', response);
+      setCounter(counter + 1);
+    }
+    return;
+  }
+
+  async function clearApeDatabase() {
+    try {
+      const response = await fetch('/api/clear-ape-database', {
+        method: 'POST' // *GET, POST, PUT, DELETE, etc.
+      });
+      console.log('response:', response);
+    } catch (e) {
+      console.log(e);
     }
     return;
   }
@@ -50,8 +66,9 @@ export default function Database(): JSX.Element {
           <Spacer size={gap} />
           <StyledButton onClick={() => populateApeDatabase(1)}>Populate with 1</StyledButton>
           <Spacer size={gap} />
-
           <StyledButton onClick={() => populateApeDatabase(5)}>Populate with 5</StyledButton>
+          <Spacer size={gap} />
+          <StyledButton onClick={clearApeDatabase}>CLEAR Database</StyledButton>
         </Wrapper>
       </MainLayout>
     </>
