@@ -57,6 +57,13 @@ export default function Grills(): JSX.Element {
     }
   }, [data]);
 
+  const onApeIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value >= 0 && +e.target.value <= 10000) {
+      setCurrentApeId(+e.target.value);
+    }
+    return;
+  };
+
   return (
     <>
       <NextSeoHoc
@@ -67,9 +74,10 @@ export default function Grills(): JSX.Element {
       />
 
       <MainLayout pageTitle="GRILLS NFT collection">
+        <Typography variant="h3">Work in Progress</Typography>
         <GridWrapper>
           <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
-            <SelectorApe />
+            <SelectorApe apeId={currentApeId} onApeIdChange={onApeIdChange} />
           </SelectorWrapper>
 
           <ApeWrapper style={{ gridArea: 'ape-image' }}>

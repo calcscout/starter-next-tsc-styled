@@ -183,6 +183,12 @@ textarea {
 
 }
 
+.no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .dark-mode {
   --bg-primary: var(--color-axie-gray-5);
   --bg-secondary: var(--color-gray-800);

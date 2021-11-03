@@ -10,18 +10,26 @@ type WithChildren<T = Record<string, unknown>> = T & {
 };
 type ComponentProps = WithChildren<{
   pageTitle?: string;
+  apeId: number;
+  onApeIdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }>;
 
-export default function SelectorApe(_props: ComponentProps): JSX.Element {
+export default function SelectorApe(props: ComponentProps): JSX.Element {
+  const { apeId, onApeIdChange } = props;
   return (
     <Wrapper>
-      <Typography variant="h6" style={{ gridArea: 'caption' }}>
-        Your Bored Ape #
+      <Typography className="no-wrap" variant="caption2" style={{ gridArea: 'caption' }}>
+        Bored Ape #
       </Typography>
-      <Typography variant="body2" style={{ gridArea: 'comment' }}>
+      <Typography className="no-wrap" variant="body2" style={{ gridArea: 'comment' }}>
         (from 1 to 10k)
       </Typography>
-      <Input placeholder="126" style={{ gridArea: 'input' }} />
+      <Input
+        value={apeId}
+        onChange={onApeIdChange}
+        placeholder="126"
+        style={{ gridArea: 'input' }}
+      />
     </Wrapper>
   );
 }
@@ -30,7 +38,7 @@ const Wrapper = styled.div`
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 95px;
-  grid-template-rows: 25px 25px;
+  grid-template-rows: 24px 24px;
   grid-template-areas:
     'caption input'
     'comment input';
@@ -42,11 +50,11 @@ const Input = styled.input.attrs({
   min: '1',
   max: '10000'
 })`
-  background-color: rgb(49, 52, 62);
+  background-color: var(--color-gray-700);
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 12px;
   caret-color: var(--color-blue-main);
-  height: 48px;
+  height: 45px;
   margin: 0px;
   font-size: 1rem;
   outline: currentcolor none medium;
@@ -56,7 +64,7 @@ const Input = styled.input.attrs({
   text-align: right;
   &:active,
   &:focus {
-    border: 1px solid rgba(249, 249, 249, 0.3);
+    border: 1px solid var(--color-gray-400);
   }
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {

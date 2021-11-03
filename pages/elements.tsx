@@ -56,6 +56,10 @@ export default function Elements(): JSX.Element {
           </Typography>
           <Spacer size={gap} />
 
+          <Typography variant="h6" align="center">
+            Typography h6
+          </Typography>
+          <Spacer size={gap} />
           <Typography variant="subtitle1" align="center">
             subtitle1
           </Typography>
