@@ -15,10 +15,24 @@ import SelectorApe from 'components/SelectorApe';
 import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
 import { QUERIES } from 'constants/constants';
+import Spacer from 'components/Spacer';
+import ape126OpenseaResponseData from 'defaultData/openSeaAssetResponse126';
 
-const fetcher = (url: string) =>
+const fetcherPost = (url: string) =>
   fetch(url, {
     method: 'POST', // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then((response) => response.json())
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+
+const fetcherGet = (url: string) =>
+  fetch(url, {
+    method: 'GET', // or 'PUT'
     headers: {
       'Content-Type': 'application/json'
     }
@@ -46,16 +60,26 @@ export default function Grills(): JSX.Element {
     'https://lh3.googleusercontent.com/mv0xKJeyQ71OkWivngYYg0yY6HBNmRz7GCXxzleD0Capjtj_m_m-XL9gIYNftgg2SD4Wy9fWjGvKKpyJDwhpltbq1SdNLynHIuogCg'
   );
 
-  const { data } = useSWR(
+  const { data: apesData } = useSWR(
     `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${currentApeId}`,
-    fetcher
+    fetcherPost
   );
 
+  const { data: openseaData } = useSWR(
+    `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${currentApeId}/`,
+    fetcherGet,
+    { fallbackData: ape126OpenseaResponseData }
+  );
+
+  const ownerName = openseaData?.owner?.user?.username || 'noName';
+
+  console.log('OpenSeaData:', openseaData);
+
   useEffect(() => {
-    if (data) {
-      setApeImageUrl(data?.image_url);
+    if (apesData) {
+      setApeImageUrl(apesData?.image_url);
     }
-  }, [data]);
+  }, [apesData]);
 
   const onApeIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (+e.target.value >= 0 && +e.target.value <= 10000) {
@@ -74,7 +98,6 @@ export default function Grills(): JSX.Element {
       />
 
       <MainLayout pageTitle="GRILLS NFT collection">
-        <Typography variant="h3">Work in Progress</Typography>
         <GridWrapper>
           <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
             <SelectorApe apeId={currentApeId} onApeIdChange={onApeIdChange} />
@@ -104,16 +127,17 @@ export default function Grills(): JSX.Element {
           </ApecessoryWrapper>
 
           <div style={{ gridArea: 'grill-selector' }}>
-            <Typography variant="h6" align="center">
-              Grill Selector WIP
+            <Typography variant="h5" align="center" style={{ color: 'var(--color-axie-danger-4)' }}>
+              Work In Progress
             </Typography>
           </div>
-          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} />
+          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} ownerName={ownerName} />
           <GrillDetailsCard apeId={126} style={{ gridArea: 'grill-details' }} />
           <TryApecessoryButton onClick={() => setCurrentApeId(40)} style={{ gridArea: 'button' }}>
             Try Grill
           </TryApecessoryButton>
         </GridWrapper>
+        <Spacer size={8} />
       </MainLayout>
     </>
   );
