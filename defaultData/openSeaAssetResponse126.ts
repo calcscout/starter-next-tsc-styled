@@ -1,4 +1,4 @@
-export default responseData = {
+const responseData = {
   id: 22833043,
   token_id: '126',
   num_sales: 2,
@@ -572,3 +572,5 @@ export default responseData = {
   ownership: null,
   highest_buyer_commitment: null
 };
+
+export default responseData;

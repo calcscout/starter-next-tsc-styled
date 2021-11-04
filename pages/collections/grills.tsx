@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
@@ -6,29 +6,45 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useSWR from 'swr';
 
+//redux
+import {
+  selectApeId,
+  selectApeImageUrl,
+  changeApeId,
+  changeApeImageUrl,
+  changePermalink,
+  changeMouthType,
+  changeOwner
+} from 'store/slices/grillsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+//components
 import styled from 'styled-components';
 import Typography from 'components/Typography';
 import Button from 'components/Button';
 import { ApeDetailsCard, GrillDetailsCard } from 'components/Cards';
 import SelectorApe from 'components/SelectorApe';
+import Spacer from 'components/Spacer';
 
+//images and icons
 import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
-import { QUERIES } from 'constants/constants';
-import Spacer from 'components/Spacer';
-import ape126OpenseaResponseData from 'defaultData/openSeaAssetResponse126';
 
-const fetcherPost = (url: string) =>
-  fetch(url, {
-    method: 'POST', // or 'PUT'
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then((response) => response.json())
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+//constants and data
+import { QUERIES } from 'constants/constants';
+// import ape126OpenseaResponseData from 'defaultData/openSeaAssetResponse126';
+
+// const fetcherPost = (url: string) =>
+//   fetch(url, {
+//     method: 'POST', // or 'PUT'
+//     headers: {
+//       'Content-Type': 'application/json'
+//     }
+//   })
+//     .then((response) => response.json())
+//     .catch((error) => {
+//       console.error('Error:', error);
+//     });
 
 const fetcherGet = (url: string) =>
   fetch(url, {
@@ -55,38 +71,48 @@ export default function Grills(): JSX.Element {
       ]
     };
 
-  const [currentApeId, setCurrentApeId] = useState(126);
-  const [apeImageUrl, setApeImageUrl] = useState(
-    'https://lh3.googleusercontent.com/mv0xKJeyQ71OkWivngYYg0yY6HBNmRz7GCXxzleD0Capjtj_m_m-XL9gIYNftgg2SD4Wy9fWjGvKKpyJDwhpltbq1SdNLynHIuogCg'
-  );
+  const dispatch = useDispatch();
+  const apeId = useSelector(selectApeId);
+  const apeImageUrl = useSelector(selectApeImageUrl);
 
-  const { data: apesData } = useSWR(
-    `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${currentApeId}`,
-    fetcherPost
-  );
+  const setApeId = (id: number) => {
+    dispatch(changeApeId(id));
+  };
+
+  // const { data: apesData } = useSWR(
+  //   `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${apeId}`,
+  //   fetcherPost
+  // );
 
   const { data: openseaData } = useSWR(
-    `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${currentApeId}/`,
-    fetcherGet,
-    { fallbackData: ape126OpenseaResponseData }
+    `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}/`,
+    fetcherGet
+    // { fallbackData: ape126OpenseaResponseData }
   );
 
-  // const ownerName = openseaData?.owner?.user?.username || 'noName';
-
-  console.log('OpenSeaData:', openseaData);
-
   useEffect(() => {
-    if (apesData) {
-      setApeImageUrl(apesData?.image_url);
-    }
-  }, [apesData]);
+    if (openseaData) {
+      openseaData?.image_url ? dispatch(changeApeImageUrl(openseaData?.image_url)) : null;
 
-  const onApeIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (+e.target.value >= 0 && +e.target.value <= 10000) {
-      setCurrentApeId(+e.target.value);
+      openseaData?.permalink ? dispatch(changePermalink(openseaData?.permalink)) : null;
+
+      openseaData?.traits?.filter((e: { trait_type: string }) => e.trait_type === 'Mouth')[0]?.value
+        ? dispatch(
+            changeMouthType(
+              openseaData?.traits?.filter(
+                (e: { trait_type: string }) => e.trait_type === 'Mouth'
+              )[0]?.value
+            )
+          )
+        : null;
+
+      openseaData?.owner?.user?.username
+        ? dispatch(changeOwner(openseaData?.owner?.user?.username))
+        : dispatch(changeOwner('unknown'));
     }
-    return;
-  };
+  }, [openseaData, dispatch]);
+
+  // const ownerName = openseaData?.owner?.user?.username || 'noName';
 
   return (
     <>
@@ -100,18 +126,22 @@ export default function Grills(): JSX.Element {
       <MainLayout pageTitle="GRILLS NFT collection">
         <GridWrapper>
           <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
-            <SelectorApe apeId={currentApeId} onApeIdChange={onApeIdChange} />
+            <SelectorApe />
           </SelectorWrapper>
 
           <ApeWrapper style={{ gridArea: 'ape-image' }}>
             <ImageWrapper>
-              <Image
-                src={apeImageUrl}
-                alt="Ape Image"
-                width={631}
-                height={631}
-                // placeholder="blur"
-              />
+              {openseaData ? (
+                <Image
+                  src={apeImageUrl}
+                  alt="Ape Image"
+                  width={631}
+                  height={631}
+                  // placeholder="blur"
+                />
+              ) : (
+                <Typography variant="h6">Loading...</Typography>
+              )}
             </ImageWrapper>
           </ApeWrapper>
           <ApecessoryWrapper style={{ gridArea: 'apecessory-image' }}>
@@ -131,9 +161,9 @@ export default function Grills(): JSX.Element {
               Work In Progress
             </Typography>
           </div>
-          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} />
-          <GrillDetailsCard apeId={126} style={{ gridArea: 'grill-details' }} />
-          <TryApecessoryButton onClick={() => setCurrentApeId(40)} style={{ gridArea: 'button' }}>
+          <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
+          <GrillDetailsCard style={{ gridArea: 'grill-details' }} />
+          <TryApecessoryButton onClick={() => setApeId(40)} style={{ gridArea: 'button' }}>
             Try Grill
           </TryApecessoryButton>
         </GridWrapper>

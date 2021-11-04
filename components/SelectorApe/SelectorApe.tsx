@@ -1,6 +1,10 @@
 import Typography from 'components/Typography';
 import styled from 'styled-components';
 
+//redux
+import { selectApeId, changeApeId } from 'store/slices/grillsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 //components
 
 //icons
@@ -10,12 +14,19 @@ type WithChildren<T = Record<string, unknown>> = T & {
 };
 type ComponentProps = WithChildren<{
   pageTitle?: string;
-  apeId: number;
-  onApeIdChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }>;
 
-export default function SelectorApe(props: ComponentProps): JSX.Element {
-  const { apeId, onApeIdChange } = props;
+export default function SelectorApe(_props: ComponentProps): JSX.Element {
+  const dispatch = useDispatch();
+  const apeId = useSelector(selectApeId);
+
+  const onApeIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value >= 0 && +e.target.value <= 10000) {
+      dispatch(changeApeId(+e.target.value));
+    }
+    return;
+  };
+
   return (
     <Wrapper>
       <Typography className="no-wrap" variant="caption2" style={{ gridArea: 'caption' }}>

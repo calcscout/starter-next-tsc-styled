@@ -2,6 +2,10 @@ import styled from 'styled-components';
 // import Link from 'next/link';
 import Typography from 'components/Typography';
 
+//redux
+import { selectApeId, selectGrillId } from 'store/slices/grillsSlice';
+import { useSelector } from 'react-redux';
+
 //IMG
 import OpenSeaLogo from '../../public/img/OpenSea-Full-Logo(light).svg';
 import VerifiedIcon from '../../public/img/icons/CustomVerifiedIcon.svg';
@@ -13,11 +17,12 @@ import EthLogo from '../../public/img/icons/ethLogo.svg';
 type ComponentProps = {
   pageTitle?: string;
   style?: React.CSSProperties;
-  apeId: number;
 };
 
 export function ApeDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, apeId } = props;
+  const { style } = props;
+  const apeId = useSelector(selectApeId);
+
   return (
     <Wrapper style={style}>
       <Row>
@@ -54,7 +59,9 @@ export function ApeDetailsCard(props: ComponentProps): JSX.Element {
 }
 
 export function GrillDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, apeId } = props;
+  const { style } = props;
+  const grillId = useSelector(selectGrillId);
+
   return (
     <Wrapper style={style}>
       <RowGrill>
@@ -73,7 +80,7 @@ export function GrillDetailsCard(props: ComponentProps): JSX.Element {
           <OpenSeaLink
             target="_blank"
             rel="noreferrer"
-            href={`https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}`}
+            href={`https://opensea.io/assets/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${grillId}`}
           >
             <OpenSeaLogo />
           </OpenSeaLink>
