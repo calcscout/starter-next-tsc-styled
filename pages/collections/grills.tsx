@@ -9,7 +9,7 @@ import useSWR from 'swr';
 //redux
 import {
   selectApeId,
-  selectApeImageUrl,
+  // selectApeImageUrl,
   changeApeId,
   changeApeImageUrl,
   changePermalink,
@@ -32,19 +32,6 @@ import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png'
 
 //constants and data
 import { QUERIES } from 'constants/constants';
-// import ape126OpenseaResponseData from 'defaultData/openSeaAssetResponse126';
-
-// const fetcherPost = (url: string) =>
-//   fetch(url, {
-//     method: 'POST', // or 'PUT'
-//     headers: {
-//       'Content-Type': 'application/json'
-//     }
-//   })
-//     .then((response) => response.json())
-//     .catch((error) => {
-//       console.error('Error:', error);
-//     });
 
 const fetcherGet = (url: string) =>
   fetch(url, {
@@ -73,21 +60,14 @@ export default function Grills(): JSX.Element {
 
   const dispatch = useDispatch();
   const apeId = useSelector(selectApeId);
-  const apeImageUrl = useSelector(selectApeImageUrl);
 
   const setApeId = (id: number) => {
     dispatch(changeApeId(id));
   };
 
-  // const { data: apesData } = useSWR(
-  //   `https://eu-central-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/apecessories-rgyid/service/bored-apes/incoming_webhook/get-ape?ape_id=${apeId}`,
-  //   fetcherPost
-  // );
-
   const { data: openseaData } = useSWR(
     `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}/`,
     fetcherGet
-    // { fallbackData: ape126OpenseaResponseData }
   );
 
   useEffect(() => {
@@ -112,8 +92,6 @@ export default function Grills(): JSX.Element {
     }
   }, [openseaData, dispatch]);
 
-  // const ownerName = openseaData?.owner?.user?.username || 'noName';
-
   return (
     <>
       <NextSeoHoc
@@ -133,11 +111,12 @@ export default function Grills(): JSX.Element {
             <ImageWrapper>
               {openseaData ? (
                 <Image
-                  src={apeImageUrl}
+                  src={openseaData.image_url}
                   alt="Ape Image"
                   width={631}
                   height={631}
-                  // placeholder="blur"
+                  placeholder="blur"
+                  blurDataURL={openseaData.image_thumbnail_url}
                 />
               ) : (
                 <Typography variant="h6">Loading...</Typography>
