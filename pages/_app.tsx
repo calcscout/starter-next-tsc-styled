@@ -2,6 +2,8 @@ import SEO from 'next-seo.config';
 import { DefaultSeo } from 'next-seo';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import store from 'store/store';
 
 import GlobalStyles from 'components/GlobalStyles';
 import { ThemeProvider } from 'styled-components';
@@ -18,12 +20,13 @@ function MyApp(props: AppProps): JSX.Element {
           name="viewport"
         />
       </Head>
-
-      <ThemeProvider theme={{ queries: QUERIES, colors: COLORS, weights: WEIGHTS }}>
-        <GlobalStyles />
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={{ queries: QUERIES, colors: COLORS, weights: WEIGHTS }}>
+          <GlobalStyles />
+          <DefaultSeo {...SEO} />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     </>
   );
 }

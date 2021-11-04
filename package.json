@@ -11,6 +11,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.2",
     "framer-motion": "latest",
     "mongoose": "^6.0.12",
     "next": "latest",
@@ -20,6 +21,7 @@
     "react-dom": "latest",
     "react-icons": "^4.3.1",
     "react-is": "latest",
+    "react-redux": "^7.2.6",
     "styled-components": "latest",
     "swr": "^1.0.1"
   },
@@ -28,6 +30,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-redux": "^7.1.20",
     "@types/styled-components": "latest",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",

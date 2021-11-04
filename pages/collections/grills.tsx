@@ -71,7 +71,7 @@ export default function Grills(): JSX.Element {
     { fallbackData: ape126OpenseaResponseData }
   );
 
-  const ownerName = openseaData?.owner?.user?.username || 'noName';
+  // const ownerName = openseaData?.owner?.user?.username || 'noName';
 
   console.log('OpenSeaData:', openseaData);
 
@@ -131,7 +131,7 @@ export default function Grills(): JSX.Element {
               Work In Progress
             </Typography>
           </div>
-          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} ownerName={ownerName} />
+          <ApeDetailsCard apeId={126} style={{ gridArea: 'ape-details' }} />
           <GrillDetailsCard apeId={126} style={{ gridArea: 'grill-details' }} />
           <TryApecessoryButton onClick={() => setCurrentApeId(40)} style={{ gridArea: 'button' }}>
             Try Grill
