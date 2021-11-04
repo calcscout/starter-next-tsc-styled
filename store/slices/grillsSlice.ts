@@ -11,7 +11,9 @@ export interface GrillsState {
   apeImageUrl: string;
   permalink: string;
   mouthType: string;
-  owner: string;
+  ownerName: string;
+  ownerAddress: string;
+  lastSalePrice: string;
 }
 
 const initialState: GrillsState = {
@@ -21,13 +23,15 @@ const initialState: GrillsState = {
   apeImageUrl: responseData.image_url,
   permalink: responseData.permalink,
   mouthType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
-  owner: responseData.owner.user.username || responseData.owner.address
+  ownerName: responseData.owner.user.username,
+  ownerAddress: responseData.owner.address,
+  lastSalePrice: responseData.last_sale.total_price
 };
 
 const totalNumberOfApes = 10000;
 const totalNumberOfGrills = 100;
 
-export const counterSlice = createSlice({
+export const grillSlice = createSlice({
   name: 'grills',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
@@ -54,8 +58,14 @@ export const counterSlice = createSlice({
     changeMouthType: (state, action: PayloadAction<string>) => {
       state.mouthType = action.payload;
     },
-    changeOwner: (state, action: PayloadAction<string>) => {
-      state.owner = action.payload;
+    changeOwnerName: (state, action: PayloadAction<string>) => {
+      state.ownerName = action.payload;
+    },
+    changeOwnerAddress: (state, action: PayloadAction<string>) => {
+      state.ownerAddress = action.payload;
+    },
+    changeLastSalePrice: (state, action: PayloadAction<string>) => {
+      state.lastSalePrice = action.payload;
     }
   }
 });
@@ -66,8 +76,10 @@ export const {
   changeApeImageUrl,
   changePermalink,
   changeMouthType,
-  changeOwner
-} = counterSlice.actions;
+  changeOwnerName,
+  changeOwnerAddress,
+  changeLastSalePrice
+} = grillSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
@@ -77,6 +89,8 @@ export const selectGrillId = (state: AppState) => state.grills.grillId;
 export const selectApeImageUrl = (state: AppState) => state.grills.apeImageUrl;
 export const selectPermalink = (state: AppState) => state.grills.permalink;
 export const selectMouthType = (state: AppState) => state.grills.mouthType;
-export const selectOwner = (state: AppState) => state.grills.owner;
+export const selectOwnerName = (state: AppState) => state.grills.ownerName;
+export const selectOwnerAddress = (state: AppState) => state.grills.ownerAddress;
+export const selectLastSalePrice = (state: AppState) => state.grills.lastSalePrice;
 
-export default counterSlice.reducer;
+export default grillSlice.reducer;

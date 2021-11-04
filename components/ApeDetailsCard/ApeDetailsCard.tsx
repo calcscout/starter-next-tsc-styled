@@ -2,6 +2,15 @@ import styled from 'styled-components';
 // import Link from 'next/link';
 import Typography from 'components/Typography';
 
+//redux
+import {
+  selectOwnerName,
+  selectOwnerAddress,
+  selectPermalink,
+  selectLastSalePrice
+} from 'store/slices/grillsSlice';
+import { useSelector } from 'react-redux';
+
 //IMG
 import OpenSeaLogo from '../../public/img/OpenSea-Full-Logo(light).svg';
 import VerifiedIcon from '../../public/img/icons/CustomVerifiedIcon.svg';
@@ -10,12 +19,15 @@ import EthLogo from '../../public/img/icons/ethLogo.svg';
 type ComponentProps = {
   pageTitle?: string;
   style?: React.CSSProperties;
-  apeId: number;
 };
 
 export default function ApeDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, apeId = 126 } = props;
-  const contractNumber = '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d';
+  const ownerName = useSelector(selectOwnerName);
+  const ownerAddress = useSelector(selectOwnerAddress);
+  const permalink = useSelector(selectPermalink);
+  const lastSalePrice = useSelector(selectLastSalePrice);
+
+  const { style } = props;
 
   return (
     <Wrapper style={style}>
@@ -24,13 +36,13 @@ export default function ApeDetailsCard(props: ComponentProps): JSX.Element {
           Owned by
         </Typography>
         <EthAddress variant="caption1" align="right">
-          0xd29719323...cf542d
+          {ownerName ? ownerName : ownerAddress}
         </EthAddress>
       </Row>
       <Row>
         <Typography variant="caption1">Last sale price</Typography>
         <Typography variant="caption1" style={{ marginLeft: 'auto' }}>
-          53.5
+          {(+lastSalePrice / 1000000000000000000).toFixed(1)}
         </Typography>
         {/* <Spacer size={2} /> */}
         <EthLogo />
@@ -40,11 +52,7 @@ export default function ApeDetailsCard(props: ComponentProps): JSX.Element {
         <VerifiedIcon style={{ fill: 'var(--color-blue-main)' }} />
       </Row>
       <LogoWrapper>
-        <OpenSeaLink
-          target="_blank"
-          rel="noreferrer"
-          href={`https://opensea.io/assets/${contractNumber}/${apeId}`}
-        >
+        <OpenSeaLink target="_blank" rel="noreferrer" href={permalink}>
           <OpenSeaLogo />
         </OpenSeaLink>
       </LogoWrapper>

@@ -8,11 +8,11 @@ import OpenSeaLogo from '../../public/img/OpenSea-Full-Logo(light).svg';
 type ComponentProps = {
   pageTitle?: string;
   style?: React.CSSProperties;
-  grillId: number;
 };
 
 export default function GrillDetailsCard(props: ComponentProps): JSX.Element {
-  const { style, grillId = 1 } = props;
+  const { style } = props;
+  const grillId = 42;
   const contractNumber = '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d';
   return (
     <Wrapper style={style}>

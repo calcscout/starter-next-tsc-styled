@@ -10,11 +10,13 @@ import useSWR from 'swr';
 import {
   selectApeId,
   // selectApeImageUrl,
-  changeApeId,
+  // changeApeId,
   changeApeImageUrl,
   changePermalink,
   changeMouthType,
-  changeOwner
+  changeOwnerName,
+  changeOwnerAddress,
+  changeLastSalePrice
 } from 'store/slices/grillsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -22,12 +24,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Typography from 'components/Typography';
 import Button from 'components/Button';
-import { ApeDetailsCard, GrillDetailsCard } from 'components/Cards';
+import ApeDetailsCard from 'components/ApeDetailsCard';
+import GrillDetailsCard from 'components/GrillDetailsCard';
 import SelectorApe from 'components/SelectorApe';
 import Spacer from 'components/Spacer';
 
 //images and icons
-import Ape126 from '../../public/img/apes/original/126-grin.png';
+// import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
 
 //constants and data
@@ -61,10 +64,6 @@ export default function Grills(): JSX.Element {
   const dispatch = useDispatch();
   const apeId = useSelector(selectApeId);
 
-  const setApeId = (id: number) => {
-    dispatch(changeApeId(id));
-  };
-
   const { data: openseaData } = useSWR(
     `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}/`,
     fetcherGet
@@ -87,8 +86,16 @@ export default function Grills(): JSX.Element {
         : null;
 
       openseaData?.owner?.user?.username
-        ? dispatch(changeOwner(openseaData?.owner?.user?.username))
-        : dispatch(changeOwner('unknown'));
+        ? dispatch(changeOwnerName(openseaData?.owner?.user?.username))
+        : dispatch(changeOwnerName('unknown'));
+
+      openseaData?.owner?.address
+        ? dispatch(changeOwnerAddress(openseaData?.owner?.address))
+        : dispatch(changeOwnerAddress('unknown'));
+
+      openseaData?.last_sale?.total_price
+        ? dispatch(changeLastSalePrice(openseaData?.last_sale?.total_price))
+        : dispatch(changeLastSalePrice('0'));
     }
   }, [openseaData, dispatch]);
 
@@ -128,7 +135,9 @@ export default function Grills(): JSX.Element {
               animate={{ opacity: [0, 0.1, 0] }}
               transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
             >
-              <LayerOneImage src={Ape126} alt="Grill inner fill red" width={631} height={631} />
+              {openseaData && (
+                <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
+              )}
             </LayerWrapper>
             <ImageWrapper>
               <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
@@ -136,15 +145,17 @@ export default function Grills(): JSX.Element {
           </ApecessoryWrapper>
 
           <div style={{ gridArea: 'grill-selector' }}>
-            <Typography variant="h5" align="center" style={{ color: 'var(--color-axie-danger-4)' }}>
-              Work In Progress
+            <Typography
+              variant="caption2"
+              align="center"
+              style={{ color: 'var(--color-axie-danger-4)', textAlign: 'center' }}
+            >
+              Grill Selector (In Development)
             </Typography>
           </div>
           <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
           <GrillDetailsCard style={{ gridArea: 'grill-details' }} />
-          <TryApecessoryButton onClick={() => setApeId(40)} style={{ gridArea: 'button' }}>
-            Try Grill
-          </TryApecessoryButton>
+          <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
         </GridWrapper>
         <Spacer size={8} />
       </MainLayout>
@@ -159,9 +170,10 @@ const GridWrapper = styled.div`
   grid-template-areas:
     'ape-selector'
     'ape-image'
+    'ape-details'
     'grill-selector'
-    'grill-details'
-    'ape-details';
+    'apecessory-image'
+    'grill-details';
   align-items: center;
   row-gap: 8px;
   justify-items: center;
@@ -191,16 +203,12 @@ const ApeWrapper = styled.div`
 `;
 
 const ApecessoryWrapper = styled.div`
-  display: none;
-  @media ${QUERIES.smUp} {
-    display: revert;
-    justify-self: center;
-    position: relative;
-    max-width: 300px;
-    max-height: 300px;
-    border: 1px solid var(--color-gray-700);
-    border-radius: 23px;
-  }
+  justify-self: center;
+  position: relative;
+  max-width: 300px;
+  max-height: 300px;
+  border: 1px solid var(--color-gray-700);
+  border-radius: 23px;
 `;
 
 const ImageWrapper = styled(motion.div)`

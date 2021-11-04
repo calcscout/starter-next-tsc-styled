@@ -34,9 +34,9 @@ export default function Collections(): JSX.Element {
       <MainLayout>
         <Wrapper>
           <CaptionTypography variant="h5" align="center">
-            Available Collections
+            Collections
           </CaptionTypography>
-          <Spacer axis="vertical" size={1} />
+          <Spacer axis="vertical" size={12} />
           <StyledButton onClick={() => router.push('/collections/grills')}>Grills</StyledButton>
           <Spacer axis="vertical" size={8} />
           <StyledButton onClick={() => router.push('/collections/pills')}>Pills</StyledButton>
