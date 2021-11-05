@@ -32,6 +32,7 @@ import Spacer from 'components/Spacer';
 //images and icons
 // import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
+import TransparentApe from '../../public/img/transparent-ape.png';
 
 //constants and data
 import { QUERIES } from 'constants/constants';
@@ -126,7 +127,15 @@ export default function Grills(): JSX.Element {
                   blurDataURL={openseaData.image_thumbnail_url}
                 />
               ) : (
-                <Typography variant="h6">Loading...</Typography>
+                <>
+                  <TransparentPlaceholder
+                    src={TransparentApe}
+                    alt="Transparent Image"
+                    width={631}
+                    height={631}
+                  />
+                  <LoadingLayer variant="h6">Loading...</LoadingLayer>
+                </>
               )}
             </ImageWrapper>
           </ApeWrapper>
@@ -213,12 +222,21 @@ const ApecessoryWrapper = styled.div`
 
 const ImageWrapper = styled(motion.div)`
   opacity: 1;
+  position: relative;
   background-color: transparent;
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+`;
+
+const TransparentPlaceholder = styled(Image)``;
+
+const LoadingLayer = styled(Typography)`
+  position: absolute;
 `;
 
 const LayerWrapper = styled(motion.div)`

@@ -59,11 +59,13 @@ const Input = styled.input.attrs({
   type: 'number',
   name: 'ape-number',
   min: '1',
-  max: '10000'
+  max: '10000',
+  step: '1'
 })`
   background-color: var(--color-gray-700);
   border: 1px solid transparent;
   border-radius: 12px;
+  color: var(--color-white);
   caret-color: var(--color-blue-main);
   height: 45px;
   margin: 0px;
