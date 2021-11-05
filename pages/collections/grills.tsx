@@ -125,7 +125,7 @@ export default function Grills(): JSX.Element {
 
             <ApeWrapper style={{ gridArea: 'ape-image' }}>
               <ImageWrapper>
-                {openseaData ? (
+                {openseaData && (
                   <Image
                     src={openseaData.image_url}
                     alt="Ape Image"
@@ -134,10 +134,9 @@ export default function Grills(): JSX.Element {
                     placeholder="blur"
                     blurDataURL={openseaData.image_thumbnail_url}
                   />
-                ) : (
-                  <LoadingLayer variant="h6">Loading...</LoadingLayer>
                 )}
               </ImageWrapper>
+              {!openseaData && <LoadingLayer variant="h6">Loading...</LoadingLayer>}
               {grillOnApe && (
                 <LayerWrapperGrillOnApe layoutId="grill">
                   <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
@@ -186,7 +185,7 @@ export default function Grills(): JSX.Element {
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-rows: auto auto auto auto auto auto auto;
+  grid-template-rows: auto 1fr auto auto auto 1fr auto;
   grid-template-columns: auto;
   grid-template-areas:
     'ape-selector'
@@ -222,6 +221,13 @@ const ApeWrapper = styled.div`
   position: relative;
   max-width: 300px;
   max-height: 300px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 23px;
+  border: 1px solid var(--color-gray-700);
 `;
 
 const ApecessoryWrapper = styled.div`
