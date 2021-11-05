@@ -34,7 +34,7 @@ import Spacer from 'components/Spacer';
 //images and icons
 // import Ape126 from '../../public/img/apes/original/126-grin.png';
 import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
-import TransparentApe from '../../public/img/transparent-ape.png';
+// import TransparentApe from '../../public/img/transparent-ape.png';
 
 //constants and data
 import { QUERIES } from 'constants/constants';
@@ -152,14 +152,7 @@ export default function Grills(): JSX.Element {
                   <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
                 )}
               </LayerWrapper>
-              {grillOnApe ? (
-                <TransparentPlaceholder
-                  src={TransparentApe}
-                  alt="Transparent Placeholder"
-                  width={631}
-                  height={631}
-                />
-              ) : (
+              {!grillOnApe && (
                 <ImageWrapper layoutId="grill">
                   <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
                 </ImageWrapper>
@@ -226,7 +219,7 @@ const ApeWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 23px;
+  border-radius: 24px;
   border: 1px solid var(--color-gray-700);
 `;
 
@@ -238,7 +231,7 @@ const ApecessoryWrapper = styled.div`
   max-width: 300px;
   max-height: 300px;
   border: 1px solid var(--color-gray-700);
-  border-radius: 23px;
+  border-radius: 24px;
 `;
 
 const ImageWrapper = styled(motion.div)`
@@ -253,7 +246,7 @@ const ImageWrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
 `;
-const TransparentPlaceholder = styled(Image)``;
+// const TransparentPlaceholder = styled(Image)``;
 
 const LoadingLayer = styled(Typography)`
   position: absolute;
@@ -297,6 +290,7 @@ const TryApecessoryButton = styled(Button)`
   height: 100%;
   width: 100%;
   max-width: 300px;
+  font-size: 0.9rem;
   @media ${QUERIES.smUp} {
     display: flex;
     align-items: center;

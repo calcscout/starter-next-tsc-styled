@@ -46,10 +46,10 @@ table {
 }
 
 /* Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property */
-*:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
+/* *:where(:not(iframe, canvas, img, svg, video):not(svg *)) {
     all: unset;
     display: revert;
-}
+} */
 
 /* For images to not be able to exceed their container */
 img {
