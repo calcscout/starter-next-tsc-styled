@@ -28,6 +28,7 @@ import Button from 'components/Button';
 import ApeDetailsCard from 'components/ApeDetailsCard';
 import GrillDetailsCard from 'components/GrillDetailsCard';
 import SelectorApe from 'components/SelectorApe';
+import SelectorGrill from 'components/SelectorGrill';
 import Spacer from 'components/Spacer';
 
 //images and icons
@@ -152,22 +153,24 @@ export default function Grills(): JSX.Element {
                   <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
                 )}
               </LayerWrapper>
-              {!grillOnApe && (
+              {grillOnApe ? (
+                <TransparentPlaceholder
+                  src={TransparentApe}
+                  alt="Transparent Placeholder"
+                  width={631}
+                  height={631}
+                />
+              ) : (
                 <ImageWrapper layoutId="grill">
                   <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
                 </ImageWrapper>
               )}
             </ApecessoryWrapper>
 
-            <div style={{ gridArea: 'grill-selector' }}>
-              <Typography
-                variant="caption2"
-                align="center"
-                style={{ color: 'var(--color-axie-danger-4)', textAlign: 'center' }}
-              >
-                Grill Selector (In Development)
-              </Typography>
-            </div>
+            <SelectorWrapper style={{ gridArea: 'grill-selector' }}>
+              <SelectorGrill />
+            </SelectorWrapper>
+
             <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
             <GrillDetailsCard style={{ gridArea: 'grill-details' }} />
             <TryApecessoryButton onClick={() => tryGrillToggle()} style={{ gridArea: 'button' }}>
@@ -183,12 +186,13 @@ export default function Grills(): JSX.Element {
 
 const GridWrapper = styled.div`
   display: grid;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto auto;
   grid-template-columns: auto;
   grid-template-areas:
     'ape-selector'
     'ape-image'
     'ape-details'
+    'button'
     'grill-selector'
     'apecessory-image'
     'grill-details';
@@ -223,8 +227,8 @@ const ApeWrapper = styled.div`
 const ApecessoryWrapper = styled.div`
   justify-self: center;
   position: relative;
-  /* min-width: min(100%, 300px);
-  min-height: min(100%, 300px); */
+  min-width: min(100%, 300px);
+  min-height: min(100%, 300px);
   max-width: 300px;
   max-height: 300px;
   border: 1px solid var(--color-gray-700);
@@ -243,7 +247,6 @@ const ImageWrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
 `;
-
 const TransparentPlaceholder = styled(Image)``;
 
 const LoadingLayer = styled(Typography)`
@@ -283,12 +286,12 @@ const LayerOneImage = styled(Image)`
 `;
 
 const TryApecessoryButton = styled(Button)`
-  display: none;
   border-radius: 9999px;
-  width: 90px;
+  /* width: 90px; */
   height: 100%;
+  width: 100%;
+  max-width: 300px;
   @media ${QUERIES.smUp} {
-    display: revert;
     display: flex;
     align-items: center;
     justify-content: center;
