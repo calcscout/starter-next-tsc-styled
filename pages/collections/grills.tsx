@@ -221,6 +221,12 @@ const ApeWrapper = styled.div`
   justify-content: center;
   border-radius: 24px;
   border: 1px solid var(--color-gray-700);
+  &:before {
+    content: ' ';
+    display: block;
+    width: 100%;
+    padding-top: 100%;
+  }
 `;
 
 const ApecessoryWrapper = styled.div`
@@ -236,15 +242,19 @@ const ApecessoryWrapper = styled.div`
 
 const ImageWrapper = styled(motion.div)`
   opacity: 1;
-  position: relative;
-  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: transparent;
   border-radius: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 100%; */
 `;
 // const TransparentPlaceholder = styled(Image)``;
 
