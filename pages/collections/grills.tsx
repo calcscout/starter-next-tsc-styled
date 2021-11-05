@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useSWR from 'swr';
+import { AnimateSharedLayout } from 'framer-motion';
 
 //redux
 import {
@@ -64,6 +65,11 @@ export default function Grills(): JSX.Element {
 
   const dispatch = useDispatch();
   const apeId = useSelector(selectApeId);
+  const [grillOnApe, setGrillOnApe] = useState(false);
+
+  const tryGrillToggle = () => {
+    setGrillOnApe((prevState) => !prevState);
+  };
 
   const { data: openseaData } = useSWR(
     `https://api.opensea.io/api/v1/asset/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d/${apeId}/`,
@@ -110,63 +116,66 @@ export default function Grills(): JSX.Element {
       />
 
       <MainLayout pageTitle="GRILLS NFT collection">
-        <GridWrapper>
-          <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
-            <SelectorApe />
-          </SelectorWrapper>
+        <AnimateSharedLayout>
+          <GridWrapper>
+            <SelectorWrapper style={{ gridArea: 'ape-selector' }}>
+              <SelectorApe />
+            </SelectorWrapper>
 
-          <ApeWrapper style={{ gridArea: 'ape-image' }}>
-            <ImageWrapper>
-              {openseaData ? (
-                <Image
-                  src={openseaData.image_url}
-                  alt="Ape Image"
-                  width={631}
-                  height={631}
-                  placeholder="blur"
-                  blurDataURL={openseaData.image_thumbnail_url}
-                />
-              ) : (
-                <>
-                  <TransparentPlaceholder
-                    src={TransparentApe}
-                    alt="Transparent Image"
+            <ApeWrapper style={{ gridArea: 'ape-image' }}>
+              <ImageWrapper>
+                {openseaData ? (
+                  <Image
+                    src={openseaData.image_url}
+                    alt="Ape Image"
                     width={631}
                     height={631}
+                    placeholder="blur"
+                    blurDataURL={openseaData.image_thumbnail_url}
                   />
+                ) : (
                   <LoadingLayer variant="h6">Loading...</LoadingLayer>
-                </>
+                )}
+              </ImageWrapper>
+              {grillOnApe && (
+                <LayerWrapperGrillOnApe layoutId="grill">
+                  <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
+                </LayerWrapperGrillOnApe>
               )}
-            </ImageWrapper>
-          </ApeWrapper>
-          <ApecessoryWrapper style={{ gridArea: 'apecessory-image' }}>
-            <LayerWrapper
-              animate={{ opacity: [0, 0.1, 0] }}
-              transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
-            >
-              {openseaData && (
-                <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
+            </ApeWrapper>
+            <ApecessoryWrapper style={{ gridArea: 'apecessory-image' }}>
+              <LayerWrapper
+                animate={{ opacity: [0, 0.1, 0] }}
+                transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
+              >
+                {openseaData && (
+                  <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
+                )}
+              </LayerWrapper>
+              {!grillOnApe && (
+                <ImageWrapper layoutId="grill">
+                  <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
+                </ImageWrapper>
               )}
-            </LayerWrapper>
-            <ImageWrapper>
-              <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
-            </ImageWrapper>
-          </ApecessoryWrapper>
+            </ApecessoryWrapper>
 
-          <div style={{ gridArea: 'grill-selector' }}>
-            <Typography
-              variant="caption2"
-              align="center"
-              style={{ color: 'var(--color-axie-danger-4)', textAlign: 'center' }}
-            >
-              Grill Selector (In Development)
-            </Typography>
-          </div>
-          <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
-          <GrillDetailsCard style={{ gridArea: 'grill-details' }} />
-          <TryApecessoryButton style={{ gridArea: 'button' }}>Try Grill</TryApecessoryButton>
-        </GridWrapper>
-        <Spacer size={8} />
+            <div style={{ gridArea: 'grill-selector' }}>
+              <Typography
+                variant="caption2"
+                align="center"
+                style={{ color: 'var(--color-axie-danger-4)', textAlign: 'center' }}
+              >
+                Grill Selector (In Development)
+              </Typography>
+            </div>
+            <ApeDetailsCard style={{ gridArea: 'ape-details' }} />
+            <GrillDetailsCard style={{ gridArea: 'grill-details' }} />
+            <TryApecessoryButton onClick={() => tryGrillToggle()} style={{ gridArea: 'button' }}>
+              {grillOnApe ? 'Remove Grill' : 'Try Grill'}
+            </TryApecessoryButton>
+          </GridWrapper>
+          <Spacer size={8} />
+        </AnimateSharedLayout>
       </MainLayout>
     </>
   );
@@ -214,6 +223,8 @@ const ApeWrapper = styled.div`
 const ApecessoryWrapper = styled.div`
   justify-self: center;
   position: relative;
+  /* min-width: min(100%, 300px);
+  min-height: min(100%, 300px); */
   max-width: 300px;
   max-height: 300px;
   border: 1px solid var(--color-gray-700);
@@ -242,6 +253,19 @@ const LoadingLayer = styled(Typography)`
 const LayerWrapper = styled(motion.div)`
   position: absolute;
   opacity: 0;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const LayerWrapperGrillOnApe = styled(motion.div)`
+  position: absolute;
+  opacity: 1;
   top: 0;
   left: 0;
   background-color: transparent;
