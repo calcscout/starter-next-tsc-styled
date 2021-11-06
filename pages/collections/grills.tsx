@@ -30,6 +30,7 @@ import GrillDetailsCard from 'components/GrillDetailsCard';
 import SelectorApe from 'components/SelectorApe';
 import SelectorGrill from 'components/SelectorGrill';
 import Spacer from 'components/Spacer';
+import DialogGrills from 'components/DialogGrills';
 
 //images and icons
 // import Ape126 from '../../public/img/apes/original/126-grin.png';
@@ -171,6 +172,7 @@ export default function Grills(): JSX.Element {
           </GridWrapper>
           <Spacer size={8} />
         </AnimateSharedLayout>
+        <DialogGrills />
       </MainLayout>
     </>
   );
@@ -301,6 +303,7 @@ const TryApecessoryButton = styled(Button)`
   width: 100%;
   max-width: 300px;
   font-size: 0.9rem;
+  line-height: 1.5;
   @media ${QUERIES.smUp} {
     display: flex;
     align-items: center;

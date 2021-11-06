@@ -11,6 +11,7 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@reach/dialog": "^0.16.2",
     "@reduxjs/toolkit": "^1.6.2",
     "framer-motion": "latest",
     "mongoose": "^6.0.12",

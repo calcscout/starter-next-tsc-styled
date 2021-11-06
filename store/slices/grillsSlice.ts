@@ -14,6 +14,7 @@ export interface GrillsState {
   ownerName: string;
   ownerAddress: string;
   lastSalePrice: string;
+  dialogGrillIsOpen: boolean;
 }
 
 const initialState: GrillsState = {
@@ -25,7 +26,8 @@ const initialState: GrillsState = {
   mouthType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
   ownerName: responseData.owner.user.username,
   ownerAddress: responseData.owner.address,
-  lastSalePrice: responseData.last_sale.total_price
+  lastSalePrice: responseData.last_sale.total_price,
+  dialogGrillIsOpen: false
 };
 
 const totalNumberOfApes = 10000;
@@ -66,6 +68,12 @@ export const grillSlice = createSlice({
     },
     changeLastSalePrice: (state, action: PayloadAction<string>) => {
       state.lastSalePrice = action.payload;
+    },
+    openDialogGrills: (state) => {
+      state.dialogGrillIsOpen = true;
+    },
+    closeDialogGrills: (state) => {
+      state.dialogGrillIsOpen = false;
     }
   }
 });
@@ -78,7 +86,9 @@ export const {
   changeMouthType,
   changeOwnerName,
   changeOwnerAddress,
-  changeLastSalePrice
+  changeLastSalePrice,
+  openDialogGrills,
+  closeDialogGrills
 } = grillSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -92,5 +102,6 @@ export const selectMouthType = (state: AppState) => state.grills.mouthType;
 export const selectOwnerName = (state: AppState) => state.grills.ownerName;
 export const selectOwnerAddress = (state: AppState) => state.grills.ownerAddress;
 export const selectLastSalePrice = (state: AppState) => state.grills.lastSalePrice;
+export const selectDialogGrillsIsOpen = (state: AppState) => state.grills.dialogGrillIsOpen;
 
 export default grillSlice.reducer;

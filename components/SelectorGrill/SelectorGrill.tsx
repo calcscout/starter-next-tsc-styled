@@ -2,8 +2,9 @@ import Typography from 'components/Typography';
 import styled from 'styled-components';
 
 //redux
-import { selectGrillId } from 'store/slices/grillsSlice';
-import { useSelector } from 'react-redux';
+import { selectGrillId, openDialogGrills } from 'store/slices/grillsSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import Button from 'components/Button';
 
 //components
 
@@ -18,8 +19,12 @@ type ComponentProps = WithChildren<{
 }>;
 
 export default function SelectorGrill(_props: ComponentProps): JSX.Element {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const grillId = useSelector(selectGrillId);
+
+  const openDialog = () => {
+    dispatch(openDialogGrills());
+  };
 
   // const onGrillIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   //   if (+e.target.value >= 0 && +e.target.value <= 10000) {
@@ -36,7 +41,7 @@ export default function SelectorGrill(_props: ComponentProps): JSX.Element {
       <Typography className="no-wrap" variant="body2" style={{ gridArea: 'comment' }}>
         (please select)
       </Typography>
-      <Selector style={{ gridArea: 'input' }}>
+      <Selector onClick={openDialog} style={{ gridArea: 'input' }}>
         {grillId}
         <MdOutlineArrowDropDown />
       </Selector>
@@ -54,7 +59,7 @@ const Wrapper = styled.div`
     'comment input';
 `;
 
-const Selector = styled.div`
+const Selector = styled(Button)`
   background-color: var(--color-gray-700);
   border-radius: 12px;
   color: var(--color-white);
@@ -65,6 +70,7 @@ const Selector = styled.div`
   align-items: center;
   /* padding-left: 12px; */
   padding-right: 12px;
+  font-size: 1rem;
   gap: 4px;
   cursor: pointer;
 `;

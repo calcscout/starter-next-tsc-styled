@@ -297,7 +297,6 @@ input:-webkit-autofill::first-line {
   background-color: currentColor;
   transform: scaleX(1);
 }
-
 `;
 
 export default GlobalStyles;
