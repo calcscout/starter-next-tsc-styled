@@ -4,6 +4,14 @@ import responseData from 'defaultData/openSeaAssetResponse126';
 
 // const responseDataType = typeof responseData;
 
+import {
+  grillsMetadataType,
+  mouthType,
+  grillsMetadata,
+  mouthMapping,
+  mouthsApecessories
+} from 'defaultData/grillsMetadata';
+
 export interface GrillsState {
   apeId: number;
   grillId: number;
@@ -15,6 +23,7 @@ export interface GrillsState {
   ownerAddress: string;
   lastSalePrice: string;
   dialogGrillIsOpen: boolean;
+  grillsMetadata: grillsMetadataType;
 }
 
 const initialState: GrillsState = {
@@ -27,7 +36,8 @@ const initialState: GrillsState = {
   ownerName: responseData.owner.user.username,
   ownerAddress: responseData.owner.address,
   lastSalePrice: responseData.last_sale.total_price,
-  dialogGrillIsOpen: false
+  dialogGrillIsOpen: false,
+  grillsMetadata
 };
 
 const totalNumberOfApes = 10000;
@@ -58,7 +68,10 @@ export const grillSlice = createSlice({
       state.permalink = action.payload;
     },
     changeMouthType: (state, action: PayloadAction<string>) => {
-      state.mouthType = action.payload;
+      const apecessoriesMouth = mouthMapping.find(
+        (e) => e.originalMouthType === action.payload
+      )?.apecessoriesMouthType;
+      state.mouthType = apecessoriesMouth || mouthsApecessories.bored;
     },
     changeOwnerName: (state, action: PayloadAction<string>) => {
       state.ownerName = action.payload;
@@ -74,6 +87,9 @@ export const grillSlice = createSlice({
     },
     closeDialogGrills: (state) => {
       state.dialogGrillIsOpen = false;
+    },
+    setGrillsMetadata: (state, action: PayloadAction<grillsMetadataType>) => {
+      state.grillsMetadata = action.payload;
     }
   }
 });
@@ -88,7 +104,8 @@ export const {
   changeOwnerAddress,
   changeLastSalePrice,
   openDialogGrills,
-  closeDialogGrills
+  closeDialogGrills,
+  setGrillsMetadata
 } = grillSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
@@ -103,5 +120,6 @@ export const selectOwnerName = (state: AppState) => state.grills.ownerName;
 export const selectOwnerAddress = (state: AppState) => state.grills.ownerAddress;
 export const selectLastSalePrice = (state: AppState) => state.grills.lastSalePrice;
 export const selectDialogGrillsIsOpen = (state: AppState) => state.grills.dialogGrillIsOpen;
+export const selectGrillsMetadata = (state: AppState) => state.grills.grillsMetadata;
 
 export default grillSlice.reducer;

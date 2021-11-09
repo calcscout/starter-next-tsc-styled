@@ -4,7 +4,11 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Image from 'next/image';
 
 //redux
-import { selectDialogGrillsIsOpen, closeDialogGrills } from 'store/slices/grillsSlice';
+import {
+  selectDialogGrillsIsOpen,
+  // selectGrillsMetadata,
+  closeDialogGrills
+} from 'store/slices/grillsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 //components
@@ -40,7 +44,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
         <Typography variant="h6" align="center">
           Choose your Grill
         </Typography>
-        <Spacer size={8} />
+        <Spacer size={12} />
         <GalleryWrapper>
           <ImageWrapper>
             <Image
