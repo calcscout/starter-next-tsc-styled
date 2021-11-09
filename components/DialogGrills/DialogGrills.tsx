@@ -9,7 +9,9 @@ import {
   selectDialogGrillsIsOpen,
   selectGrillsMetadata,
   selectMouthType,
-  closeDialogGrills
+  closeDialogGrills,
+  changeGrillId,
+  changeGrillType
 } from 'store/slices/grillsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -67,11 +69,18 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
         <GalleryWrapper>
           {filteredGrillsMetadata &&
             filteredGrillsMetadata.map((grill) => (
-              <ImageWrapper key={grill.dna}>
+              <ImageWrapper
+                onClick={() => {
+                  dispatch(changeGrillId(grill.edition));
+                  dispatch(changeGrillType(grill.mouth));
+                  close();
+                }}
+                key={grill.edition}
+              >
                 <Image
                   src={`/img/races/${grill.mouth}/${grill.edition}.png`}
                   blurDataURL={`/img/races/${grill.mouth}/${grill.edition}.png`}
-                  alt="Grin1"
+                  alt={`Grill ${grill.edition}`}
                   width={631}
                   height={631}
                   placeholder="blur"
@@ -103,6 +112,7 @@ const ImageWrapper = styled.div`
   border-radius: 8px;
   display: flex;
   height: 100%;
+  cursor: pointer;
 `;
 
 const DialogContentStyled = styled(DialogContent)`

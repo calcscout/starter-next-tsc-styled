@@ -18,6 +18,7 @@ export interface GrillsState {
   apeImageUrl: string;
   permalink: string;
   mouthType: string;
+  grillType: string;
   ownerName: string;
   ownerAddress: string;
   lastSalePrice: string;
@@ -32,6 +33,7 @@ const initialState: GrillsState = {
   apeImageUrl: responseData.image_url,
   permalink: responseData.permalink,
   mouthType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
+  grillType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
   ownerName: responseData.owner.user.username,
   ownerAddress: responseData.owner.address,
   lastSalePrice: responseData.last_sale.total_price,
@@ -70,7 +72,10 @@ export const grillSlice = createSlice({
       const apecessoriesMouth = mouthMapping.find(
         (e) => e.originalMouthType === action.payload
       )?.apecessoriesMouthType;
-      state.mouthType = apecessoriesMouth || apecessoriesMouthType.bored;
+      state.mouthType = apecessoriesMouth || apecessoriesMouthType.grin;
+    },
+    changeGrillType: (state, action: PayloadAction<string>) => {
+      state.grillType = action.payload;
     },
     changeOwnerName: (state, action: PayloadAction<string>) => {
       state.ownerName = action.payload;
@@ -99,6 +104,7 @@ export const {
   changeApeImageUrl,
   changePermalink,
   changeMouthType,
+  changeGrillType,
   changeOwnerName,
   changeOwnerAddress,
   changeLastSalePrice,
@@ -115,6 +121,7 @@ export const selectGrillId = (state: AppState) => state.grills.grillId;
 export const selectApeImageUrl = (state: AppState) => state.grills.apeImageUrl;
 export const selectPermalink = (state: AppState) => state.grills.permalink;
 export const selectMouthType = (state: AppState) => state.grills.mouthType;
+export const selectGrillType = (state: AppState) => state.grills.grillType;
 export const selectOwnerName = (state: AppState) => state.grills.ownerName;
 export const selectOwnerAddress = (state: AppState) => state.grills.ownerAddress;
 export const selectLastSalePrice = (state: AppState) => state.grills.lastSalePrice;

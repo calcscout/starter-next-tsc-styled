@@ -10,6 +10,9 @@ import { AnimateSharedLayout } from 'framer-motion';
 //redux
 import {
   selectApeId,
+  selectGrillId,
+  selectMouthType,
+  selectGrillType,
   // selectApeImageUrl,
   // changeApeId,
   changeApeImageUrl,
@@ -34,7 +37,7 @@ import DialogGrills from 'components/DialogGrills';
 
 //images and icons
 // import Ape126 from '../../public/img/apes/original/126-grin.png';
-import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
+// import Grill1 from '../../public/img/apecessories/grills/mouth-grin/grill-1.png';
 // import TransparentApe from '../../public/img/transparent-ape.png';
 
 //constants and data
@@ -67,6 +70,9 @@ export default function Grills(): JSX.Element {
 
   const dispatch = useDispatch();
   const apeId = useSelector(selectApeId);
+  const grillId = useSelector(selectGrillId);
+  const grillType = useSelector(selectGrillType);
+  const mouthType = useSelector(selectMouthType);
   const [grillOnApe, setGrillOnApe] = useState(false);
 
   const tryGrillToggle = () => {
@@ -140,7 +146,14 @@ export default function Grills(): JSX.Element {
               {!openseaData && <LoadingLayer variant="h6">Loading...</LoadingLayer>}
               {grillOnApe && (
                 <LayerWrapperGrillOnApe layoutId="grill">
-                  <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
+                  <Image
+                    src={`/img/races/${grillType}/${grillId}.png`}
+                    blurDataURL={`/img/races/${grillType}/${grillId}.png`}
+                    alt={`Grill ${grillId}`}
+                    width={631}
+                    height={631}
+                    placeholder="blur"
+                  />
                 </LayerWrapperGrillOnApe>
               )}
             </ApeWrapper>
@@ -155,7 +168,14 @@ export default function Grills(): JSX.Element {
               </LayerWrapper>
               {!grillOnApe && (
                 <ImageWrapper layoutId="grill">
-                  <Image src={Grill1} alt="Ape 126" width={631} height={631} placeholder="blur" />
+                  <Image
+                    src={`/img/races/${mouthType}/${grillId}.png`}
+                    blurDataURL={`/img/races/${mouthType}/${grillId}.png`}
+                    alt={`Grill ${mouthType} ${grillId}`}
+                    width={631}
+                    height={631}
+                    placeholder="blur"
+                  />
                 </ImageWrapper>
               )}
             </ApecessoryWrapper>
