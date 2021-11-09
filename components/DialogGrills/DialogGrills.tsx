@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import '@reach/dialog/styles.css';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
@@ -6,7 +7,8 @@ import Image from 'next/image';
 //redux
 import {
   selectDialogGrillsIsOpen,
-  // selectGrillsMetadata,
+  selectGrillsMetadata,
+  selectMouthType,
   closeDialogGrills
 } from 'store/slices/grillsSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,6 +31,23 @@ type ComponentProps = WithChildren<{
 export default function DialogGrills(_props: ComponentProps): JSX.Element {
   const dispatch = useDispatch();
   const showDialog = useSelector(selectDialogGrillsIsOpen);
+  const grillsMetadata = useSelector(selectGrillsMetadata);
+  const mouthType = useSelector(selectMouthType);
+
+  const filteredGrillsMetadata = useMemo(() => {
+    const result = grillsMetadata.filter((grill) => {
+      const filterResult = grill.mouth === mouthType;
+      console.log('grill.mouth', grill.mouth);
+      console.log('mouthType', mouthType);
+      console.log('condition', grill.mouth === mouthType);
+      return filterResult;
+    });
+
+    console.log('result', result);
+    return result;
+  }, [mouthType, grillsMetadata]);
+
+  console.log('filteredMetadata:', filteredGrillsMetadata);
 
   const close = () => {
     dispatch(closeDialogGrills());
@@ -46,86 +65,19 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
         </Typography>
         <Spacer size={12} />
         <GalleryWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/grin/1.png"
-              blurDataURL="/img/races/grin/1.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/grin/2.png"
-              blurDataURL="/img/races/grin/2.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/phoneme-vuh/3.png"
-              blurDataURL="/img/races/phoneme-vuh/3.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/phoneme-vuh/4.png"
-              blurDataURL="/img/races/phoneme-vuh/4.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/rage/5.png"
-              blurDataURL="/img/races/rage/5.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/rage/6.png"
-              blurDataURL="/img/races/rage/6.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/small-grin/7.png"
-              blurDataURL="/img/races/small-grin/7.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
-          <ImageWrapper>
-            <Image
-              src="/img/races/small-grin/8.png"
-              blurDataURL="/img/races/small-grin/8.png"
-              alt="Grin1"
-              width={631}
-              height={631}
-              placeholder="blur"
-            />
-          </ImageWrapper>
+          {filteredGrillsMetadata &&
+            filteredGrillsMetadata.map((grill) => (
+              <ImageWrapper key={grill.dna}>
+                <Image
+                  src={`/img/races/${grill.mouth}/${grill.edition}.png`}
+                  blurDataURL={`/img/races/${grill.mouth}/${grill.edition}.png`}
+                  alt="Grin1"
+                  width={631}
+                  height={631}
+                  placeholder="blur"
+                />
+              </ImageWrapper>
+            ))}
         </GalleryWrapper>
       </DialogContentStyled>
     </DialogOverlay>
@@ -142,7 +94,7 @@ const GalleryWrapper = styled.div`
   justify-items: center;
   /* padding: 16px; */
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(min(100px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
 `;
 
 const ImageWrapper = styled.div`
