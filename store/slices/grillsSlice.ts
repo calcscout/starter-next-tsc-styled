@@ -6,10 +6,9 @@ import responseData from 'defaultData/openSeaAssetResponse126';
 
 import {
   grillsMetadataType,
-  mouthType,
   grillsMetadata,
   mouthMapping,
-  mouthsApecessories
+  apecessoriesMouthType
 } from 'defaultData/grillsMetadata';
 
 export interface GrillsState {
@@ -71,7 +70,7 @@ export const grillSlice = createSlice({
       const apecessoriesMouth = mouthMapping.find(
         (e) => e.originalMouthType === action.payload
       )?.apecessoriesMouthType;
-      state.mouthType = apecessoriesMouth || mouthsApecessories.bored;
+      state.mouthType = apecessoriesMouth || apecessoriesMouthType.bored;
     },
     changeOwnerName: (state, action: PayloadAction<string>) => {
       state.ownerName = action.payload;
