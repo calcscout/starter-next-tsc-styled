@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import NextSeoHoc from 'components/NextSeoHoc';
 import useTranslation from 'next-translate/useTranslation';
 import MainLayout from 'components/MainLayout';
@@ -13,6 +13,8 @@ import {
   selectGrillId,
   selectMouthType,
   selectGrillType,
+  selectGrillOnApe,
+  toggleGrillOnApe,
   // selectApeImageUrl,
   // changeApeId,
   changeApeImageUrl,
@@ -73,12 +75,11 @@ export default function Grills(): JSX.Element {
   const grillId = useSelector(selectGrillId);
   const grillType = useSelector(selectGrillType);
   const mouthType = useSelector(selectMouthType);
+  const grillOnApe = useSelector(selectGrillOnApe);
   const apeGrillAligned = mouthType.toLowerCase() === grillType.toLowerCase();
 
-  const [grillOnApe, setGrillOnApe] = useState(false);
-
   const tryGrillToggle = () => {
-    setGrillOnApe((prevState) => !prevState);
+    dispatch(toggleGrillOnApe());
   };
 
   const { data: openseaData } = useSWR(
@@ -146,7 +147,7 @@ export default function Grills(): JSX.Element {
                 )}
               </ImageWrapper>
               {!openseaData && <LoadingLayer variant="h6">Loading...</LoadingLayer>}
-              {grillOnApe && (
+              {grillOnApe && apeGrillAligned && openseaData && (
                 <LayerWrapperGrillOnApe layoutId="grill">
                   <Image
                     src={`/img/races/${grillType}/${grillId}.png`}

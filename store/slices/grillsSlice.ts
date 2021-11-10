@@ -15,6 +15,7 @@ export interface GrillsState {
   apeId: number;
   grillId: number;
   fittingGrills: number[];
+  grillOnApe: boolean;
   apeImageUrl: string;
   permalink: string;
   mouthType: string;
@@ -31,6 +32,7 @@ const initialState: GrillsState = {
   grillId: 1,
   fittingGrills: [1, 2, 3, 4, 5],
   apeImageUrl: responseData.image_url,
+  grillOnApe: false,
   permalink: responseData.permalink,
   mouthType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
   grillType: responseData.traits.filter((e) => e.trait_type === 'Mouth')[0].value,
@@ -67,6 +69,12 @@ export const grillSlice = createSlice({
     },
     changePermalink: (state, action: PayloadAction<string>) => {
       state.permalink = action.payload;
+    },
+    toggleGrillOnApe: (state) => {
+      state.grillOnApe ? (state.grillOnApe = false) : (state.grillOnApe = true);
+    },
+    resetGrillOnApe: (state) => {
+      state.grillOnApe = false;
     },
     changeMouthType: (state, action: PayloadAction<string>) => {
       const apecessoriesMouth = mouthMapping.find(
@@ -106,6 +114,8 @@ export const {
   changeMouthType,
   changeGrillType,
   changeOwnerName,
+  toggleGrillOnApe,
+  resetGrillOnApe,
   changeOwnerAddress,
   changeLastSalePrice,
   openDialogGrills,
@@ -122,6 +132,7 @@ export const selectApeImageUrl = (state: AppState) => state.grills.apeImageUrl;
 export const selectPermalink = (state: AppState) => state.grills.permalink;
 export const selectMouthType = (state: AppState) => state.grills.mouthType;
 export const selectGrillType = (state: AppState) => state.grills.grillType;
+export const selectGrillOnApe = (state: AppState) => state.grills.grillOnApe;
 export const selectOwnerName = (state: AppState) => state.grills.ownerName;
 export const selectOwnerAddress = (state: AppState) => state.grills.ownerAddress;
 export const selectLastSalePrice = (state: AppState) => state.grills.lastSalePrice;

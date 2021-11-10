@@ -9,6 +9,7 @@ import {
   selectDialogGrillsIsOpen,
   selectGrillsMetadata,
   selectMouthType,
+  resetGrillOnApe,
   // selectGrillType,
   closeDialogGrills,
   changeGrillId,
@@ -49,6 +50,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
   const noGrillsYet = filteredGrillsMetadata.length === 0;
 
   const close = () => {
+    dispatch(resetGrillOnApe());
     dispatch(closeDialogGrills());
   };
 
