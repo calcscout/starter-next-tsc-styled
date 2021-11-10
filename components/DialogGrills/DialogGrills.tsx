@@ -9,6 +9,7 @@ import {
   selectDialogGrillsIsOpen,
   selectGrillsMetadata,
   selectMouthType,
+  // selectGrillType,
   closeDialogGrills,
   changeGrillId,
   changeGrillType
@@ -18,10 +19,12 @@ import { useDispatch, useSelector } from 'react-redux';
 //components
 import VisuallyHidden from 'components/VisuallyHidden';
 import Typography from 'components/Typography';
+import Spacer from 'components/Spacer';
 
 //icons
 import { IoIosClose } from 'react-icons/io';
-import Spacer from 'components/Spacer';
+import { BiPaint } from 'react-icons/bi';
+import EthLogo from '../../public/img/icons/ethLogo.svg';
 
 type WithChildren<T = Record<string, unknown>> = T & {
   children?: React.ReactNode;
@@ -35,21 +38,15 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
   const showDialog = useSelector(selectDialogGrillsIsOpen);
   const grillsMetadata = useSelector(selectGrillsMetadata);
   const mouthType = useSelector(selectMouthType);
-
   const filteredGrillsMetadata = useMemo(() => {
     const result = grillsMetadata.filter((grill) => {
       const filterResult = grill.mouth === mouthType;
-      console.log('grill.mouth', grill.mouth);
-      console.log('mouthType', mouthType);
-      console.log('condition', grill.mouth === mouthType);
       return filterResult;
     });
 
-    console.log('result', result);
     return result;
   }, [mouthType, grillsMetadata]);
-
-  console.log('filteredMetadata:', filteredGrillsMetadata);
+  const noGrillsYet = filteredGrillsMetadata.length === 0;
 
   const close = () => {
     dispatch(closeDialogGrills());
@@ -62,10 +59,25 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
           <IoIosClose />
           <VisuallyHidden>Close Button</VisuallyHidden>
         </CloseButtonWrapper>
-        <Typography variant="h6" align="center">
-          Choose your Grill
-        </Typography>
+        {!noGrillsYet && (
+          <Typography variant="h6" align="center">
+            Choose your Grill
+          </Typography>
+        )}
         <Spacer size={12} />
+        {noGrillsYet && (
+          <DesignersStillWorkWrapper>
+            <Typography
+              variant="h5"
+              align="center"
+              style={{ lineHeight: 1.5, textAlign: 'center' }}
+            >
+              Our designers are working on this type of grills.
+            </Typography>
+            <Spacer size={24} />
+            <BiPaint style={{ width: '40px', height: '40px' }} />
+          </DesignersStillWorkWrapper>
+        )}
         <GalleryWrapper>
           {filteredGrillsMetadata &&
             filteredGrillsMetadata.map((grill) => (
@@ -85,6 +97,13 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
                   height={631}
                   placeholder="blur"
                 />
+                <GrillId>#{grill.edition}</GrillId>
+                <GrillPriceWrapper>
+                  <>
+                    {grill.price}
+                    <EthLogo />
+                  </>
+                </GrillPriceWrapper>
               </ImageWrapper>
             ))}
         </GalleryWrapper>
@@ -113,6 +132,38 @@ const ImageWrapper = styled.div`
   display: flex;
   height: 100%;
   cursor: pointer;
+  position: relative;
+`;
+
+const GrillId = styled(Typography)`
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  color: var(--color-gray-400);
+`;
+
+const GrillPriceWrapper = styled(Typography)`
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  color: var(--color-gray-400);
+  display: flex;
+  align-items: center;
+`;
+
+const DesignersStillWorkWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  pointer-events: none;
 `;
 
 const DialogContentStyled = styled(DialogContent)`

@@ -73,6 +73,8 @@ export default function Grills(): JSX.Element {
   const grillId = useSelector(selectGrillId);
   const grillType = useSelector(selectGrillType);
   const mouthType = useSelector(selectMouthType);
+  const apeGrillAligned = mouthType.toLowerCase() === grillType.toLowerCase();
+
   const [grillOnApe, setGrillOnApe] = useState(false);
 
   const tryGrillToggle = () => {
@@ -166,7 +168,7 @@ export default function Grills(): JSX.Element {
                   <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
                 )}
               </LayerWrapper>
-              {!grillOnApe && (
+              {!grillOnApe && apeGrillAligned && (
                 <ImageWrapper layoutId="grill">
                   <Image
                     src={`/img/races/${mouthType}/${grillId}.png`}
@@ -178,6 +180,7 @@ export default function Grills(): JSX.Element {
                   />
                 </ImageWrapper>
               )}
+              {!apeGrillAligned && <SelectGrillTypography>Choose your Grill</SelectGrillTypography>}
             </ApecessoryWrapper>
 
             <SelectorWrapper style={{ gridArea: 'grill-selector' }}>
@@ -295,6 +298,15 @@ const LayerWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+`;
+
+const SelectGrillTypography = styled(Typography)`
+  position: absolute;
+  opacity: 1;
+  top: 5px;
+  right: 12px;
+  background-color: transparent;
+  color: var(--color-axie-warning-4);
 `;
 
 const LayerWrapperGrillOnApe = styled(motion.div)`

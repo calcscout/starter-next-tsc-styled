@@ -74,7 +74,7 @@ const LogoWrapper = styled.div`
 
 const EthAddress = styled(Typography)`
   flex: 1;
-  padding-right: 8px;
+  padding-right: 2px;
   & svg {
     fill: black;
   }

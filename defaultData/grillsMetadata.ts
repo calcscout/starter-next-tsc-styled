@@ -77,6 +77,7 @@ export type grillsMetadataType = {
   edition: number;
   date: number;
   mouth: string;
+  price: number;
   attributes: {
     trait_type: string;
     value: string;
@@ -92,6 +93,7 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 1,
     date: 1636433262551,
     mouth: apecessoriesMouthType.grin,
+    price: 0.2,
     attributes: [
       {
         trait_type: 'Outline',
@@ -115,6 +117,103 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 2,
     date: 1636433262551,
     mouth: apecessoriesMouthType.grin,
+    price: 0.7,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Hacky'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #9',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '9.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 9,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.grin,
+    price: 0.5,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #10',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '10.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 10,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.grin,
+    price: 0.23,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Hacky'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #11',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '11.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 11,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.grin,
+    price: 0.6,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #12',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '12.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 12,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.grin,
+    price: 0.5,
     attributes: [
       {
         trait_type: 'Outline',
@@ -138,6 +237,7 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 3,
     date: 1636433262551,
     mouth: apecessoriesMouthType.phonemeVuh,
+    price: 0.2,
     attributes: [
       {
         trait_type: 'Outline',
@@ -161,6 +261,103 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 4,
     date: 1636433262551,
     mouth: apecessoriesMouthType.phonemeVuh,
+    price: 1.8,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'phoneme-vuh'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #13',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '13.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 13,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.phonemeVuh,
+    price: 1.2,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'phoneme-vuh'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #14',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '14.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 14,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.phonemeVuh,
+    price: 0.3,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'phoneme-vuh'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #15',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '15.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 15,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.phonemeVuh,
+    price: 0.8,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'phoneme-vuh'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #16',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '16.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 16,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.phonemeVuh,
+    price: 0.27,
     attributes: [
       {
         trait_type: 'Outline',
@@ -184,6 +381,7 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 5,
     date: 1636433262551,
     mouth: apecessoriesMouthType.rage,
+    price: 0.4,
     attributes: [
       {
         trait_type: 'Outline',
@@ -207,6 +405,103 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 6,
     date: 1636433262551,
     mouth: apecessoriesMouthType.rage,
+    price: 0.2,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'rage'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #17',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '17.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 17,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.rage,
+    price: 0.25,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'rage'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #18',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '18.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 18,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.rage,
+    price: 0.3,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'rage'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #19',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '19.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 19,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.rage,
+    price: 0.5,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'rage'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #20',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '20.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 20,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.rage,
+    price: 0.6,
     attributes: [
       {
         trait_type: 'Outline',
@@ -230,6 +525,7 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 7,
     date: 1636433262551,
     mouth: apecessoriesMouthType.smallGrin,
+    price: 0.1,
     attributes: [
       {
         trait_type: 'Outline',
@@ -253,6 +549,103 @@ export const grillsMetadata: grillsMetadataType = [
     edition: 8,
     date: 1636433262551,
     mouth: apecessoriesMouthType.smallGrin,
+    price: 0.5,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'small-grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #21',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '21.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 21,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.smallGrin,
+    price: 0.4,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'small-grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #22',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '22.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 22,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.smallGrin,
+    price: 0.2,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'small-grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #23',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '23.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 23,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.smallGrin,
+    price: 0.3,
+    attributes: [
+      {
+        trait_type: 'Outline',
+        value: 'small-grin'
+      },
+      {
+        trait_type: 'Inner fill',
+        value: 'Red'
+      },
+      {
+        trait_type: 'Outer Fill',
+        value: 'Yellow'
+      }
+    ]
+  },
+  {
+    name: 'Grill #24',
+    description: 'Collection of NFT grills for your bored apes',
+    image: '24.png',
+    dna: 'a8d6ffa349fd27b3be266c9855ba3708b75f5d80',
+    edition: 24,
+    date: 1636433262551,
+    mouth: apecessoriesMouthType.smallGrin,
+    price: 0.2,
     attributes: [
       {
         trait_type: 'Outline',

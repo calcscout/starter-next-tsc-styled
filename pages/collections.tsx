@@ -33,13 +33,15 @@ export default function Collections(): JSX.Element {
 
       <MainLayout>
         <Wrapper>
-          <CaptionTypography variant="h5" align="center">
+          <CaptionTypography variant="h4" align="center">
             Collections
           </CaptionTypography>
-          <Spacer axis="vertical" size={12} />
+          <Spacer axis="vertical" size={18} />
           <StyledButton onClick={() => router.push('/collections/grills')}>Grills</StyledButton>
           <Spacer axis="vertical" size={8} />
-          <StyledButton onClick={() => router.push('/collections/pills')}>Pills</StyledButton>
+          <StyledButtonInactive>Pills (WIP)</StyledButtonInactive>
+          <Spacer axis="vertical" size={8} />
+          <StyledButtonInactive>Necklaces (WIP)</StyledButtonInactive>
         </Wrapper>
       </MainLayout>
     </>
@@ -56,7 +58,27 @@ const Wrapper = styled.div`
 const StyledButton = styled(Button)`
   border-radius: 9999px;
   width: 100%;
+  min-width: 150px;
   max-width: 60vmin;
+`;
+
+const StyledButtonInactive = styled(StyledButton)`
+  background-color: var(--color-gray-500);
+  color: var(--color-gray-400);
+  cursor: revert;
+  &:hover,
+  &:focus {
+    background-color: var(--color-gray-500);
+  }
+
+  &:focus {
+    outline: 1px solid var(--color-gray-500);
+    outline-offset: -1px;
+  }
+
+  &:active {
+    /* transform: scale(0.99); */
+  }
 `;
 
 const CaptionTypography = styled(Typography)`

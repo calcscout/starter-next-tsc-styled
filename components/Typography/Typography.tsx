@@ -39,7 +39,7 @@ export default function Typography(props: TypographyProps) {
   switch (variant) {
     case 'h1':
       return (
-        <H1 style={{ '--align': align }} className={className} {...delegated}>
+        <H1 className={className} {...delegated} style={{ '--align': align }}>
           {children}
         </H1>
       );
