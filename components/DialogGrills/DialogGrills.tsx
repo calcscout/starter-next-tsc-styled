@@ -77,7 +77,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
           </CloseButtonWrapper>
           {!noGrillsYet && (
             <Typography variant="h6" align="center">
-              Choose your Grill
+              Choose your {mouthType.toUpperCase()} Grill
             </Typography>
           )}
           <Spacer size={12} />
@@ -88,7 +88,15 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
                 align="center"
                 style={{ lineHeight: 1.5, textAlign: 'center' }}
               >
-                Our designers are working on this type of grills.
+                Our designers are working on this type of grill
+              </Typography>
+              <Spacer size={12} />
+              <Typography
+                variant="h5"
+                align="center"
+                style={{ lineHeight: 1.5, textAlign: 'center' }}
+              >
+                {`(${mouthType.toUpperCase()})`}
               </Typography>
               <Spacer size={24} />
               <BiPaint style={{ width: '40px', height: '40px' }} />

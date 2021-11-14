@@ -88,6 +88,7 @@ export default function Grills(): JSX.Element {
   );
 
   useEffect(() => {
+    console.log(openseaData);
     if (openseaData) {
       openseaData?.image_url ? dispatch(changeApeImageUrl(openseaData?.image_url)) : null;
 
@@ -102,7 +103,6 @@ export default function Grills(): JSX.Element {
             )
           )
         : null;
-
       openseaData?.owner?.user?.username
         ? dispatch(changeOwnerName(openseaData?.owner?.user?.username))
         : dispatch(changeOwnerName('unknown'));
@@ -181,7 +181,16 @@ export default function Grills(): JSX.Element {
                   />
                 </ImageWrapper>
               )}
-              {!apeGrillAligned && <SelectGrillTypography>Choose your Grill</SelectGrillTypography>}
+              {!apeGrillAligned && (
+                <>
+                  <SelectGrillTypography>Choose your Grill</SelectGrillTypography>
+                  <SelectGrillTypography
+                    style={{ top: 'revert', bottom: '5px', color: 'var(--color-gray-500)' }}
+                  >
+                    {mouthType}
+                  </SelectGrillTypography>
+                </>
+              )}
             </ApecessoryWrapper>
 
             <SelectorWrapper style={{ gridArea: 'grill-selector' }}>

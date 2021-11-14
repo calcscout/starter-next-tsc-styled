@@ -77,8 +77,11 @@ export const grillSlice = createSlice({
       state.grillOnApe = false;
     },
     changeMouthType: (state, action: PayloadAction<string>) => {
+      console.log('payload mouth:', action.payload);
+      const oneSpaceString = action.payload.replace(/\s+/g, ' ').trim();
+      console.log('correct spaces mouth:', oneSpaceString);
       const apecessoriesMouth = mouthMapping.find(
-        (e) => e.originalMouthType === action.payload
+        (e) => e.originalMouthType === oneSpaceString
       )?.apecessoriesMouthType;
       state.mouthType = apecessoriesMouth || apecessoriesMouthType.grin;
     },

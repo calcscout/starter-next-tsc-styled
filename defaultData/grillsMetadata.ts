@@ -5,6 +5,10 @@ export type mouthType =
   | 'grin'
   | 'jovial'
   | 'phoneme-vuh'
+  | 'phoneme-ooo'
+  | 'phoneme-l'
+  | 'phoneme-oh'
+  | 'phoneme-wah'
   | 'rage'
   | 'small-grin'
   | 'tongue-out';
@@ -16,6 +20,10 @@ export const apecessoriesMouthType = {
   grin: 'grin',
   jovial: 'jovial',
   phonemeVuh: 'phoneme-vuh',
+  phonemeOoo: 'phoneme-ooo',
+  phonemeL: 'phoneme-l',
+  phonemeOh: 'phoneme-oh',
+  phonemeWah: 'phoneme-Wah',
   rage: 'rage',
   smallGrin: 'small-grin',
   tongueOut: 'tongue-out'
@@ -37,10 +45,10 @@ export const mouthMapping = [
     originalMouthType: 'Bored Unshaven Cigarette',
     apecessoriesMouthType: apecessoriesMouthType.bored
   },
-  { originalMouthType: 'Phoneme ooo', apecessoriesMouthType: apecessoriesMouthType.phonemeVuh },
-  { originalMouthType: 'Phoneme L', apecessoriesMouthType: apecessoriesMouthType.phonemeVuh },
-  { originalMouthType: 'Phoneme Oh', apecessoriesMouthType: apecessoriesMouthType.phonemeVuh },
-  { originalMouthType: 'Phoneme Wah', apecessoriesMouthType: apecessoriesMouthType.phonemeVuh },
+  { originalMouthType: 'Phoneme ooo', apecessoriesMouthType: apecessoriesMouthType.phonemeOoo },
+  { originalMouthType: 'Phoneme L', apecessoriesMouthType: apecessoriesMouthType.phonemeL },
+  { originalMouthType: 'Phoneme Oh', apecessoriesMouthType: apecessoriesMouthType.phonemeOh },
+  { originalMouthType: 'Phoneme Wah', apecessoriesMouthType: apecessoriesMouthType.phonemeWah },
   { originalMouthType: 'Bored Pipe', apecessoriesMouthType: apecessoriesMouthType.bored },
   { originalMouthType: 'Bored Cigar', apecessoriesMouthType: apecessoriesMouthType.bored },
   { originalMouthType: 'Bored Bubblegum', apecessoriesMouthType: apecessoriesMouthType.bored },
