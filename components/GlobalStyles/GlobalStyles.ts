@@ -180,6 +180,7 @@ textarea {
   --color-axie-danger-3: #fe4c52;
   --color-axie-danger-4: #fe383f;
   --color-axie-danger-5: #be3637;
+  --radius-max: 24px;
 
 }
 

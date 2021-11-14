@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import '@reach/dialog/styles.css';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Image from 'next/image';
+import { AnimatePresence, motion } from 'framer-motion';
 
 //redux
 import {
@@ -34,6 +35,8 @@ type ComponentProps = WithChildren<{
   pageTitle?: string;
 }>;
 
+const MotionDialogContent = motion(DialogContent);
+
 export default function DialogGrills(_props: ComponentProps): JSX.Element {
   const dispatch = useDispatch();
   const showDialog = useSelector(selectDialogGrillsIsOpen);
@@ -55,62 +58,74 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
   };
 
   return (
-    <DialogOverlay isOpen={showDialog} onDismiss={close}>
-      <DialogContentStyled>
-        <CloseButtonWrapper onClick={close}>
-          <IoIosClose />
-          <VisuallyHidden>Close Button</VisuallyHidden>
-        </CloseButtonWrapper>
-        {!noGrillsYet && (
-          <Typography variant="h6" align="center">
-            Choose your Grill
-          </Typography>
-        )}
-        <Spacer size={12} />
-        {noGrillsYet && (
-          <DesignersStillWorkWrapper>
-            <Typography
-              variant="h5"
-              align="center"
-              style={{ lineHeight: 1.5, textAlign: 'center' }}
-            >
-              Our designers are working on this type of grills.
+    <AnimatePresence exitBeforeEnter>
+      <DialogOverlay
+        isOpen={showDialog}
+        onDismiss={close}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 0 }}
+      >
+        <DialogContentStyled
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+        >
+          <CloseButtonWrapper onClick={close}>
+            <IoIosClose />
+            <VisuallyHidden>Close Button</VisuallyHidden>
+          </CloseButtonWrapper>
+          {!noGrillsYet && (
+            <Typography variant="h6" align="center">
+              Choose your Grill
             </Typography>
-            <Spacer size={24} />
-            <BiPaint style={{ width: '40px', height: '40px' }} />
-          </DesignersStillWorkWrapper>
-        )}
-        <GalleryWrapper>
-          {filteredGrillsMetadata &&
-            filteredGrillsMetadata.map((grill) => (
-              <ImageWrapper
-                onClick={() => {
-                  dispatch(changeGrillId(grill.edition));
-                  dispatch(changeGrillType(grill.mouth));
-                  close();
-                }}
-                key={grill.edition}
+          )}
+          <Spacer size={12} />
+          {noGrillsYet && (
+            <DesignersStillWorkWrapper>
+              <Typography
+                variant="h5"
+                align="center"
+                style={{ lineHeight: 1.5, textAlign: 'center' }}
               >
-                <Image
-                  src={`/img/races/${grill.mouth}/${grill.edition}.png`}
-                  blurDataURL={`/img/races/${grill.mouth}/${grill.edition}.png`}
-                  alt={`Grill ${grill.edition}`}
-                  width={631}
-                  height={631}
-                  placeholder="blur"
-                />
-                <GrillId>#{grill.edition}</GrillId>
-                <GrillPriceWrapper>
-                  <>
-                    {grill.price}
-                    <EthLogo />
-                  </>
-                </GrillPriceWrapper>
-              </ImageWrapper>
-            ))}
-        </GalleryWrapper>
-      </DialogContentStyled>
-    </DialogOverlay>
+                Our designers are working on this type of grills.
+              </Typography>
+              <Spacer size={24} />
+              <BiPaint style={{ width: '40px', height: '40px' }} />
+            </DesignersStillWorkWrapper>
+          )}
+          <GalleryWrapper>
+            {filteredGrillsMetadata &&
+              filteredGrillsMetadata.map((grill) => (
+                <ImageWrapper
+                  onClick={() => {
+                    dispatch(changeGrillId(grill.edition));
+                    dispatch(changeGrillType(grill.mouth));
+                    close();
+                  }}
+                  key={grill.edition}
+                >
+                  <Image
+                    src={`/img/races/${grill.mouth}/${grill.edition}.png`}
+                    blurDataURL={`/img/races/${grill.mouth}/${grill.edition}.png`}
+                    alt={`Grill ${grill.edition}`}
+                    width={631}
+                    height={631}
+                    placeholder="blur"
+                  />
+                  <GrillId>#{grill.edition}</GrillId>
+                  <GrillPriceWrapper>
+                    <>
+                      {grill.price}
+                      <EthLogo />
+                    </>
+                  </GrillPriceWrapper>
+                </ImageWrapper>
+              ))}
+          </GalleryWrapper>
+        </DialogContentStyled>
+      </DialogOverlay>
+    </AnimatePresence>
   );
 }
 
@@ -168,7 +183,7 @@ const DesignersStillWorkWrapper = styled.div`
   pointer-events: none;
 `;
 
-const DialogContentStyled = styled(DialogContent)`
+const DialogContentStyled = styled(MotionDialogContent)`
   position: absolute;
   overflow: hidden;
   top: 0;

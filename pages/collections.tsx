@@ -4,6 +4,7 @@ import MainLayout from 'components/MainLayout';
 import Button from 'components/Button';
 import Spacer from 'components/Spacer';
 import { useRouter } from 'next/router';
+import { QUERIES } from 'constants/constants';
 
 import styled from 'styled-components';
 import Typography from 'components/Typography';
@@ -72,12 +73,23 @@ const StyledButtonInactive = styled(StyledButton)`
   }
 
   &:focus {
-    outline: 1px solid var(--color-gray-500);
-    outline-offset: -1px;
+    outline: 0px solid var(--color-gray-500);
+    outline-offset: 0px;
   }
 
   &:active {
-    /* transform: scale(0.99); */
+    transform: scale(1);
+  }
+  font-size: 0.8rem;
+
+  @media ${QUERIES.smUp} {
+    font-size: 1rem;
+  }
+  @media ${QUERIES.mdUp} {
+    font-size: 1rem;
+  }
+  @media ${QUERIES.lgUp} {
+    font-size: 1rem;
   }
 `;
 

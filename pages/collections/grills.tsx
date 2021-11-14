@@ -245,7 +245,8 @@ const ApeWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
+  border-radius: var(--radius-max);
+  overflow: hidden;
   border: 1px solid var(--color-gray-700);
   &:before {
     content: ' ';
@@ -263,7 +264,8 @@ const ApecessoryWrapper = styled.div`
   max-width: 300px;
   max-height: 300px;
   border: 1px solid var(--color-gray-700);
-  border-radius: 24px;
+  border-radius: var(--radius-max);
+  overflow: hidden;
 `;
 
 const ImageWrapper = styled(motion.div)`

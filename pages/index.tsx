@@ -89,8 +89,8 @@ const CombinationWrapper = styled.div`
   position: relative;
   width: 60vmin;
   height: 60vmin;
-  max-width: 631px;
-  max-height: 631px;
+  max-width: 500px;
+  max-height: 500px;
 `;
 
 const ImageWrapper = styled(motion.div)`
