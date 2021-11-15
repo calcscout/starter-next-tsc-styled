@@ -77,7 +77,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
           </CloseButtonWrapper>
           {!noGrillsYet && (
             <Typography variant="h6" align="center">
-              Choose your {mouthType.toUpperCase()} Grill
+              Choose your Grill
             </Typography>
           )}
           <Spacer size={12} />
@@ -121,7 +121,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
                     height={631}
                     placeholder="blur"
                   />
-                  <GrillId>#{grill.edition}</GrillId>
+                  <GrillId>Grill #{grill.edition}</GrillId>
                   <GrillPriceWrapper>
                     <>
                       {grill.price}
@@ -151,9 +151,9 @@ const GalleryWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  border: 1px solid var(--color-axie-gray-2);
-  background-color: var(--color-axie-gray-3);
-  border-radius: 8px;
+  /* border: 1px solid var(--color-axie-gray-2); */
+  background-color: var(--color-grill-card);
+  border-radius: 12px;
   display: flex;
   height: 100%;
   cursor: pointer;
@@ -162,15 +162,15 @@ const ImageWrapper = styled.div`
 
 const GrillId = styled(Typography)`
   position: absolute;
-  top: 6px;
-  right: 10px;
+  top: 8px;
+  left: 12px;
   color: var(--color-gray-400);
 `;
 
 const GrillPriceWrapper = styled(Typography)`
   position: absolute;
-  bottom: 6px;
-  right: 6px;
+  bottom: 8px;
+  right: 8px;
   color: var(--color-gray-400);
   display: flex;
   align-items: center;
