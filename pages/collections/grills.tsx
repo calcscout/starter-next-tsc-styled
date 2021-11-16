@@ -152,9 +152,10 @@ export default function Grills(): JSX.Element {
                   <Image
                     src={`/img/races/${grillType}/${grillId}.png`}
                     blurDataURL={`/img/races/${grillType}/${grillId}.png`}
-                    alt={`Grill ${grillId}`}
+                    alt={`Grill ${mouthType} ${grillId}`}
                     width={631}
                     height={631}
+                    unoptimized
                     placeholder="blur"
                   />
                 </LayerWrapperGrillOnApe>
@@ -166,7 +167,7 @@ export default function Grills(): JSX.Element {
                 transition={{ delay: 2, duration: 8, repeatType: 'reverse', repeat: Infinity }}
               >
                 {openseaData && (
-                  <LayerOneImage src={openseaData.image_url} alt="Grill" width={631} height={631} />
+                  <LayerOneImage src={openseaData.image_url} alt="Ape" width={631} height={631} />
                 )}
               </LayerWrapper>
               {!grillOnApe && apeGrillAligned && (
@@ -177,6 +178,7 @@ export default function Grills(): JSX.Element {
                     alt={`Grill ${mouthType} ${grillId}`}
                     width={631}
                     height={631}
+                    unoptimized
                     placeholder="blur"
                   />
                 </ImageWrapper>

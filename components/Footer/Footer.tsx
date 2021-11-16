@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { FaDiscord } from 'react-icons/fa';
-import { FaTwitter } from 'react-icons/fa';
+// import { FaDiscord } from 'react-icons/fa';
+// import { FaTwitter } from 'react-icons/fa';
 import OpenseaLogo from '../../public/img/icons/openseLogo.svg';
 
 type ComponentProps = {
@@ -15,17 +15,6 @@ export default function Footer(_props: ComponentProps): JSX.Element {
 
   return (
     <Wrapper>
-      <SocialIcons>
-        <IconButton onClick={() => router.push('/socials')}>
-          <FaDiscord />
-        </IconButton>
-        <IconButton onClick={() => router.push('/socials')}>
-          <FaTwitter />
-        </IconButton>
-        <IconButton onClick={() => router.push('/socials')}>
-          <OpenseaLogo />
-        </IconButton>
-      </SocialIcons>
       <Apecessories>
         {`© ${new Date().getFullYear()}`} &nbsp;
         <span className="underlined" style={{ cursor: 'pointer' }}>
@@ -36,6 +25,17 @@ export default function Footer(_props: ComponentProps): JSX.Element {
         </span>
         &nbsp;
       </Apecessories>
+      <SocialIcons>
+        {/* <IconButton onClick={() => router.push('/socials')}>
+          <FaDiscord />
+        </IconButton>
+        <IconButton onClick={() => router.push('/socials')}>
+          <FaTwitter />
+        </IconButton> */}
+        <IconButton onClick={() => router.push('/socials')}>
+          <OpenseaLogo />
+        </IconButton>
+      </SocialIcons>
     </Wrapper>
   );
 }
@@ -45,7 +45,7 @@ const Wrapper = styled.footer`
   padding: 16px var(--main-container-padding);
   display: flex;
   gap: 8px;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: transparent;
@@ -108,7 +108,6 @@ const IconButton = styled.button`
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   font-size: 1.5rem;
-  padding: 12px;
   border-radius: 50%;
   overflow: visible;
   color: rgba(0, 0, 0, 0.54);
@@ -116,12 +115,12 @@ const IconButton = styled.button`
   transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   /* margin-left: 12px; */
   color: inherit;
-  padding: 8px;
+  padding: 0px;
   font-size: 1.75rem;
   & > svg {
     fill: var(--text-primary);
-    height: 24px;
-    font-size: 24px;
+    height: 20px;
+    font-size: 20px;
   }
   &:hover {
     /* background-color: var(--color-gray-800); */

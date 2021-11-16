@@ -119,6 +119,7 @@ export default function DialogGrills(_props: ComponentProps): JSX.Element {
                     alt={`Grill ${grill.edition}`}
                     width={631}
                     height={631}
+                    unoptimized
                     placeholder="blur"
                   />
                   <GrillId>Grill #{grill.edition}</GrillId>
@@ -147,7 +148,7 @@ const GalleryWrapper = styled.div`
   justify-items: center;
   /* padding: 16px; */
   gap: 16px;
-  grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
 `;
 
 const ImageWrapper = styled.div`
